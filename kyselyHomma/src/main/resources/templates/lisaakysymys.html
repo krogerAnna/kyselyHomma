@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form th:object="${kysymys}" th:action="@{save}" action="#" method="post">
+			<label for="content">Uusi kysymys</label> 
+			<input type="text" id="content" th:field="*{content}" /> 
+			
+			<input type="submit" value="Tallenna"></input>
+		</form>
+		<h1>Kysymykset</h1>
+	<table>
+		<tr th:each="kysymys : ${kysymykset}">
+			<td th:text="${kysymys.content}"></td>	
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
