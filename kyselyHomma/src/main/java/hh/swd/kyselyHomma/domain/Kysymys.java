@@ -14,6 +14,8 @@ public class Kysymys {
 	
 	private String content;
 	
+	
+	
 	public Kysymys() {}
 	
 	public Kysymys( String content) {
