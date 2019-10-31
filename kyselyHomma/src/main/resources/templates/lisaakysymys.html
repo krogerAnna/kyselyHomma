@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,7 +15,8 @@
 		<h1>Kysymykset</h1>
 	<table>
 		<tr th:each="kysymys : ${kysymykset}">
-			<td th:text="${kysymys.content}"></td>	
+			<td th:text="${kysymys.content}"></td>
+			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}">Poista</a></td>	
 		</tr>
 	</table>
 	</div>
