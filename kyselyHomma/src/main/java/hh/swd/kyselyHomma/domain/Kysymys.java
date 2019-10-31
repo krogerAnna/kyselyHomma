@@ -10,7 +10,7 @@ public class Kysymys {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long Id;
+	private Long Id;
 	
 	private String content;
 	
@@ -23,11 +23,11 @@ public class Kysymys {
 		this.content = content;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

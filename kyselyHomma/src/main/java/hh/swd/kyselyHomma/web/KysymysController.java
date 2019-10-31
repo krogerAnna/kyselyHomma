@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,5 +37,12 @@ public class KysymysController {
 	public String save(Kysymys kysymys) {
 		repository.save(kysymys);
 		return "redirect:lisaakysymys";
+	}
+	
+	//delete
+	@GetMapping("/poistakysymys/{id}")
+	public String poistaKysymys(@PathVariable("id") Long kysymysId, Model model) {
+		repository.deleteById(kysymysId);
+		return "redirect:../lisaakysymys";
 	}
 }
