@@ -12,6 +12,7 @@ import hh.swd.kyselyHomma.domain.KysymysRepository;
 public class KyselyHommaApplication {
 
 	////////:))))
+	//HEi tää on mun kommentti hei kattokaa
 	public static void main(String[] args) {
 		SpringApplication.run(KyselyHommaApplication.class, args);
 	}
