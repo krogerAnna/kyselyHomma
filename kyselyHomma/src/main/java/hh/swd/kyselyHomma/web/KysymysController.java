@@ -52,7 +52,7 @@ public class KysymysController {
 	//Poista kysymys
 	@GetMapping("/poistakysymys/{id}")
 	public String delete(@PathVariable("id") Long id) {
-		repository.deleteById(id);
+		repository.deleteById(id); //testikommentti
 		return "redirect:../lisaakysymys";
 	}
 	
