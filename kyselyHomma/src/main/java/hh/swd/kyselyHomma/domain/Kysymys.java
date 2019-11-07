@@ -1,9 +1,13 @@
 package hh.swd.kyselyHomma.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Kysymys {
@@ -13,6 +17,9 @@ public class Kysymys {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String content;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="vastaus")
+	private List<Vastaus> vastaukset;
 	
 	
 	//konstuktorit
@@ -32,6 +39,10 @@ public class Kysymys {
 		return content;
 	}
 	
+	public void getVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
+	}
+	
 	//setterit
 	public void setId(Long id) {
 		this.id = id;
@@ -39,6 +50,10 @@ public class Kysymys {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public void setVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
 	}
 	
 	
