@@ -2,17 +2,18 @@ package hh.swd.kyselyHomma.web;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
  
-@Controller
+@RestController
 public class KysymysController {
 
 	private final KysymysRepository repository;
@@ -42,6 +43,11 @@ public class KysymysController {
 		return "lisaakysymys";
 	}
 	
+	@PostMapping("/kysymykset")
+	Kysymys newKysymys(@RequestBody Kysymys newKysymys) {
+	    return repository.save(newKysymys);
+	  }
+	
 	//Tallentaa uuden kysymyksen
 	@PostMapping("/save")
 	public String save(Kysymys kysymys) {
@@ -52,7 +58,7 @@ public class KysymysController {
 	//Poista kysymys
 	@GetMapping("/poistakysymys/{id}")
 	public String delete(@PathVariable("id") Long id) {
-		repository.deleteById(id); //testikommentti
+		repository.deleteById(id);
 		return "redirect:../lisaakysymys";
 	}
 	
