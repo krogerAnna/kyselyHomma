@@ -20,6 +20,7 @@ public class Vastaus {
 	@JoinColumn(name="kysymys")
 	private Kysymys kysymys;
 	
+	
 	//konstruktorit
 	public Vastaus() {
 		super();
