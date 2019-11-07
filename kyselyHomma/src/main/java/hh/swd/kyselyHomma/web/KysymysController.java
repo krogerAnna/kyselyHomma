@@ -1,6 +1,7 @@
 package hh.swd.kyselyHomma.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +29,22 @@ public class KysymysController {
 		return "welcome";
 	}
 	
-	//Etsii ja palauttaa kaikki kysymykset
+	//REST Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
 	@ResponseBody List<Kysymys> kysymykset() {
 		return repository.findAll();
+	}
+	
+	//REST homepage
+	@GetMapping("/resthome")
+	public String restHomePage() {
+		return "resthome";
+	}
+	
+	//REST getById
+	@GetMapping("/kysymykset/{id}")
+	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id) {
+		return repository.findById(id);
 	}
 	
 	//Annetaan model attributet Thymeleaf-templatelle
@@ -55,5 +68,6 @@ public class KysymysController {
 		repository.deleteById(id); //testikommentti
 		return "redirect:../lisaakysymys";
 	}
+	
 	
 }
