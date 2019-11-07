@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="utf-8" />
+	<title>REST Home Page</title>
+</head>
+<body>
+	<h1>REST Home Page</h1>
+	<h2>Kaikki kysymykset</h2>
+	<p>
+		<strong>Method:</strong> GET 
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kysymykset">/kysymykset</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+			[{
+				"id":1,
+				"content":"Status?"
+			},
+			{
+				"id":2,
+				"content":"Kuinka usein asioit kouluruokalassa?"
+			},
+			{
+				"id":3,
+				"content":"Jos et asioi ollenkaan tai todella harvoin niin miksi?"
+			},
+			{
+				"id":4,
+				"content":"Mikä lisäisi/parantaisi ruokalassa asioimistasi?"
+			},
+			{
+				"id":5,
+				"content":"Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:"
+			},
+			{
+				"id":6,
+				"content":"Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:"
+			}]
+		</code>
+	</pre>
+	<h2>Kysymys By ID</h2>
+	<p>
+		<strong> GET </strong>
+		<strong> /kysymykset/{id} </strong> 
+		<strong><a href="/kysymykset/2">/kysymykset/2</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+		{
+			"id":2,
+			"content":"Kuinka usein asioit kouluruokalassa?"
+		}
+		</code>
+	</pre>
+	<h2>Uusi Kysymys</h2>
+	<a href="/lisaakysymys">Luo uusi kysymys</a>
+	<p>
+		<strong> POST </strong> 
+		<strong> /kysymykset</strong> 
+		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+		{
+			"id":7,
+			"content":"Are you wanna die?"
+		}
+		</code>
+	</pre>
+</body>
+</html>

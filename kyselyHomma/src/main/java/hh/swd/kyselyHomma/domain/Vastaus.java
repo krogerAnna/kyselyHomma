@@ -1,16 +1,14 @@
 package hh.swd.kyselyHomma.domain;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Kysymys {
+public class Vastaus {
 	
 	//attribuutit
 	@Id
@@ -18,19 +16,22 @@ public class Kysymys {
 	private Long id;
 	private String content;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="vastaus")
-	private List<Vastaus> vastaukset;
+	@ManyToOne
+	@JoinColumn(name="kysymys")
+	private Kysymys kysymys;
 	
 	
-	//konstuktorit
-	public Kysymys() {}
-	
-	public Kysymys(String content) {
+	//konstruktorit
+	public Vastaus() {
 		super();
-		this.content = content;
 	}
 
-	//getterit
+	public Vastaus(String content, Kysymys kysymys) {
+		super();
+		this.content = content;
+		this.kysymys = kysymys;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -38,12 +39,11 @@ public class Kysymys {
 	public String getContent() {
 		return content;
 	}
-	
-	public void getVastaukset(List<Vastaus> vastaukset) {
-		this.vastaukset = vastaukset;
+
+	public Kysymys getKysymys() {
+		return kysymys;
 	}
-	
-	//setterit
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -51,11 +51,9 @@ public class Kysymys {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	public void setVastaukset(List<Vastaus> vastaukset) {
-		this.vastaukset = vastaukset;
+
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
 	}
-	
-	
 
 }
