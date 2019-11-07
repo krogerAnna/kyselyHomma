@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Kysymys {
+public class Vastaus {
 	
 	//attribuutit
 	@Id
@@ -14,16 +16,21 @@ public class Kysymys {
 	private Long id;
 	private String content;
 	
+	@ManyToOne
+	@JoinColumn(name="kysymys")
+	private Kysymys kysymys;
 	
-	//konstuktorit
-	public Kysymys() {}
-	
-	public Kysymys(String content) {
+	//konstruktorit
+	public Vastaus() {
 		super();
-		this.content = content;
 	}
 
-	//getterit
+	public Vastaus(String content, Kysymys kysymys) {
+		super();
+		this.content = content;
+		this.kysymys = kysymys;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -31,8 +38,11 @@ public class Kysymys {
 	public String getContent() {
 		return content;
 	}
-	
-	//setterit
+
+	public Kysymys getKysymys() {
+		return kysymys;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -40,7 +50,9 @@ public class Kysymys {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
+	}
 
 }
