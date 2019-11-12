@@ -12,10 +12,10 @@ public class VastausController {
 	VastausController ( VastausRepository repository ) {
 		this.repository = repository;
 	}
-	
-	@PostMapping("/vastaus")
+
+	@PostMapping("/savevastaus")
 	public String saveVastaus(Vastaus vastaus) {
 		repository.save(vastaus);
-		return "redirect:vastaus";
+		return "redirect:savevastaus";
 	}
 }
