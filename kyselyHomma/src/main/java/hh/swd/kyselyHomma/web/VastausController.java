@@ -13,8 +13,8 @@ public class VastausController {
 		this.repository = repository;
 	}
 	
-	@PostMapping("/savevastaus")
-	public String saveVastaus(Vastaus vastaus) {
-		repository.save(vastaus);
-	}
+//	@PostMapping("/savevastaus")
+//	public String saveVastaus(Vastaus vastaus) {
+//		repository.save(vastaus);
+//	}
 }
