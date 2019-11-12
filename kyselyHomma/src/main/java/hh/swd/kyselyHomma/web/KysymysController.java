@@ -18,7 +18,7 @@ public class KysymysController {
 
 	private final KysymysRepository repository;
 	
-	
+	//päivää
 	KysymysController (KysymysRepository repository) {
 		this.repository = repository;
 	}
