@@ -42,7 +42,7 @@ public class KysymysController {
 		return "resthome";
 	}
 	
-	//REST getById
+	//REST Kysymys getById
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id) {
 		return repository.findById(id);
