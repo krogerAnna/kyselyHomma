@@ -13,11 +13,11 @@ public class Vastaus {
 	//attribuutit
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long vastausId;
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name="kysymys")
+	@JoinColumn(name="id")
 	private Kysymys kysymys;
 	
 	
@@ -33,7 +33,7 @@ public class Vastaus {
 	}
 
 	public Long getId() {
-		return id;
+		return vastausId;
 	}
 
 	public String getContent() {
@@ -45,7 +45,7 @@ public class Vastaus {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.vastausId = id;
 	}
 
 	public void setContent(String content) {
