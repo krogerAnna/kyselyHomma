@@ -27,25 +27,6 @@ public class KysymysController {
 		return "welcome";
 	}
 	
-	//REST Etsii ja palauttaa kaikki kysymykset
-	@GetMapping("/kysymykset")
-	@ResponseBody List<Kysymys> kysymykset() {
-		return repository.findAll();
-	}
-	
-	//REST homepage
-	@GetMapping("/resthome")
-	public String restHomePage() {
-		return "resthome";
-	}
-	
-	//REST Kysymys getById
-	@GetMapping("/kysymykset/{id}")
-	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id) {
-		return repository.findById(id);
-	}
-	
-
 	//Annetaan model attributet Thymeleaf-templatelle
 	@GetMapping("/lisaakysymys")
 	public String lisaaKysymys(Model model) {
@@ -54,13 +35,8 @@ public class KysymysController {
 		return "lisaakysymys";
 	}
 	
-	@PostMapping("/kysymykset")
-	Kysymys newKysymys(@RequestBody Kysymys newKysymys) {
-	    return repository.save(newKysymys);
-	  }
-	
 	//Tallentaa uuden kysymyksen
-	@PostMapping("/save")
+	@PostMapping("/savekysymys")
 	public String save(Kysymys kysymys) {
 		repository.save(kysymys);
 		return "redirect:lisaakysymys";
