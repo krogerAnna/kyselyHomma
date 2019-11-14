@@ -36,6 +36,7 @@ public class Kysymys {
 	public Kysymys(String content, Kysely kysely) {
 		super();
 		this.content = content;
+		this.kysely = kysely;
 
 	}
 	
