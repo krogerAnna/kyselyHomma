@@ -31,7 +31,6 @@ public class RESTController {
 	@Autowired
 	private KysymysRepository kysymysRepo;
 
-	
 	// Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
 	@ResponseBody List<Kysymys> kysymykset() {
@@ -63,10 +62,11 @@ public class RESTController {
 	}
 	
 	// **** Kysely RESTit **** //
+  
+  @Autowired
+	private KyselyRepository kyselyRepo;
 	
 	// Etsii ja palauttaa kaikki kyselyt
-	@Autowired
-	private KyselyRepository kyselyRepo;
 	@GetMapping("/kyselyt")
 	@ResponseBody List<Kysely> kyselyt() {
 		return kyselyRepo.findAll();
@@ -77,7 +77,5 @@ public class RESTController {
 	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long kyselyId) {
 		return kyselyRepo.findById(kyselyId);
 	}
-	
-	
 	
 }
