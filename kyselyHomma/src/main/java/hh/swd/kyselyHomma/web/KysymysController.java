@@ -35,11 +35,6 @@ public class KysymysController {
 		return "lisaakysymys";
 	}
 	
-	@PostMapping("/kysymykset")
-	Kysymys newKysymys(@RequestBody Kysymys newKysymys) {
-	    return repository.save(newKysymys);
-	  }
-	
 	//Tallentaa uuden kysymyksen
 	@PostMapping("/savekysymys")
 	public String save(Kysymys kysymys) {
