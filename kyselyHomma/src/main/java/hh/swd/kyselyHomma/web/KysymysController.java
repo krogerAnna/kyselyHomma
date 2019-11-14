@@ -3,11 +3,10 @@ package hh.swd.kyselyHomma.web;
 import java.util.List;
 import java.util.Optional;
 
-<<<<<<< HEAD
-=======
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
->>>>>>> cf4affdcf483353aaf8839e12c83c5e3f53df56d
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,17 +21,10 @@ import hh.swd.kyselyHomma.domain.KysymysRepository;
 @RestController
 public class KysymysController {
 
-<<<<<<< HEAD
-	private final KysymysRepository repository;
-	
-	
-	KysymysController (KysymysRepository repository) {
-		this.repository = repository;
-	}
-=======
+
 	@Autowired
 	private KysymysRepository repository;
->>>>>>> cf4affdcf483353aaf8839e12c83c5e3f53df56d
+
 	
 	//Palauttaa etusivun
 	@GetMapping("/")
@@ -81,13 +73,10 @@ public class KysymysController {
 	
 	//Poista kysymys
 	@GetMapping("/poistakysymys/{id}")
-<<<<<<< HEAD
-	public String delete(@PathVariable("id") Long id) {
-		repository.deleteById(id);
-=======
+
 	public String delete(@PathVariable("id") Long kysymysId) {
 		repository.deleteById(kysymysId);
->>>>>>> cf4affdcf483353aaf8839e12c83c5e3f53df56d
+
 		return "redirect:../lisaakysymys";
 	}
 	
