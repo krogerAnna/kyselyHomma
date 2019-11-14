@@ -22,48 +22,60 @@ public class RESTController {
 
 	@Autowired
 	private KysymysRepository kysymysRepo;
-	
+
 	@Autowired
 	private KyselyRepository kyselyRepo;
-	
-	//KysymysRESTit
-	
-	//REST Etsii ja palauttaa kaikki kysymykset
+
+	@Autowired
+	private VastausRepository repository;
+
+	// KysymysRESTit
+
+	// REST Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
-	@ResponseBody List<Kysymys> kysymykset() {
+	@ResponseBody
+	List<Kysymys> kysymykset() {
 		return kysymysRepo.findAll();
 	}
-	
-	//REST homepage
+
+	// REST homepage
 	@GetMapping("/resthome")
 	public String restHomePage() {
 		return "resthome";
 	}
-	
-	//REST getById
+
+	// REST getById
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
 	}
-	
-	
-	//Vastaus RESTit
-	
-	@Autowired VastausRepository vastausRepo;
-	
-	//REST Etsii kaikki vastaukset
+
+	// Vastaus RESTit
+
+	@Autowired
+	VastausRepository vastausRepo;
+
+	// REST Etsii kaikki vastaukset
 	@GetMapping("/vastaukset")
-	@ResponseBody List<Vastaus> vastaukset() {
+	@ResponseBody
+	List<Vastaus> vastaukset() {
 		return vastausRepo.findAll();
 	}
-	
+
 	// getById
 	@GetMapping("vastaukset/{id}")
 	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
 	}
+
 	@GetMapping("/kysely/{id}")
 	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long kyselyId) {
 		return kyselyRepo.findById(kyselyId);
+	}
+
+	@GetMapping("/kysymys/vastaukset")
+	public @ResponseBody Optional<Vastaus> findVastauksetByKysymys(@PathVariable("id") Long kysymysId) {
+
+		return repository.findAllById(kysymysId);
 	}
 }

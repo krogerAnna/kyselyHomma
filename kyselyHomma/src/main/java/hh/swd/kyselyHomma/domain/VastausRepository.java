@@ -1,5 +1,6 @@
 package hh.swd.kyselyHomma.domain;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.repository.CrudRepository;
@@ -7,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface VastausRepository extends JpaRepository<Vastaus, Long> {
 
 	List<Kysymys> findByContent(String content);
+
+	Optional<Vastaus> findAllById(Long kysymysId);
 }
