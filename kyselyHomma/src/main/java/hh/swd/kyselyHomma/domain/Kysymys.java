@@ -7,45 +7,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Kysymys {
 	
-	//attribuutit
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kysymysId;
 	private String content;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="vastaus")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
+	
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Kysely kysely;
 	
 	
 	//konstuktorit
 	public Kysymys() {}
 	
-	public Kysymys(String content) {
+	public Kysymys(String content, Kysely kysely) {
 		super();
 		this.content = content;
-	}
 
-	//getterit
-	public Long getId() {
-		return id;
-	}
-
-	public String getContent() {
-		return content;
-	}
-	
-	public void getVastaukset(List<Vastaus> vastaukset) {
-		this.vastaukset = vastaukset;
 	}
 	
 	//setterit
-	public void setId(Long id) {
-		this.id = id;
+	public void setKysymysId(Long id) {
+		this.kysymysId = id;
 	}
 
 	public void setContent(String content) {
@@ -56,6 +49,32 @@ public class Kysymys {
 		this.vastaukset = vastaukset;
 	}
 	
+	public void setKysely(Kysely kysely) {
+		this.kysely = kysely;
+	}
 	
+	//getterit
+	public Long getKysymysId() {
+		return kysymysId;
+	}
 
+	public String getContent() {
+		return content;
+	}
+	
+	public List<Vastaus> getVastaukset() {
+		return vastaukset;
+	}
+	
+	public Kysely getKysely() {
+		return kysely;
+	}
+
+	//toString
+	@Override
+	public String toString() {
+		return "Kysymys [kysymysId=" + kysymysId + ", content=" + content + ", vastaukset=" + vastaukset + ", kysely="
+				+ kysely + "]";
+	}
+	
 }
