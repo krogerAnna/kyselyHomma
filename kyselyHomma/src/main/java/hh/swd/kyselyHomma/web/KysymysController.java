@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
@@ -26,8 +27,6 @@ public class KysymysController {
 		return "welcome";
 	}
 	
-<<<<<<< HEAD
-=======
 	//REST Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
 	@ResponseBody List<Kysymys> kysymykset() {
@@ -46,7 +45,7 @@ public class KysymysController {
 		return repository.findById(id);
 	}
 	
->>>>>>> 426b833b52a8e7eed2fb8a897fb5c0769ccc671e
+
 	//Annetaan model attributet Thymeleaf-templatelle
 	@GetMapping("/lisaakysymys")
 	public String lisaaKysymys(Model model) {

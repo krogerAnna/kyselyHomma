@@ -26,9 +26,7 @@ public class VastausController {
 	public void saveVastaus(Vastaus vastaus) {
 		repository.save(vastaus);
 	}
-<<<<<<< HEAD
 
-=======
 	
 	//REST Etsii ja palauttaa kaikki vastaukset
 	@GetMapping("/vastaukset")
@@ -41,5 +39,4 @@ public class VastausController {
 	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id")Long id) {
 		return repository.findById(id);
 	}
->>>>>>> 426b833b52a8e7eed2fb8a897fb5c0769ccc671e
 }
