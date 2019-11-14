@@ -19,39 +19,37 @@ import hh.swd.kyselyHomma.domain.VastausRepository;
 
 @Controller
 public class RESTController {
-
-	@Autowired
-	private KysymysRepository kysymysRepo;
-	
-	@Autowired
-	private KyselyRepository kyselyRepo;
-	
-	//KysymysRESTit
-	
-	//REST Etsii ja palauttaa kaikki kysymykset
-	@GetMapping("/kysymykset")
-	@ResponseBody List<Kysymys> kysymykset() {
-		return kysymysRepo.findAll();
-	}
 	
 	//REST homepage
 	@GetMapping("/resthome")
 	public String restHomePage() {
 		return "resthome";
 	}
+
+	// **** Kysymys RESTit **** //
 	
-	//REST getById
+	@Autowired
+	private KysymysRepository kysymysRepo;
+
+	// Etsii ja palauttaa kaikki kysymykset
+	@GetMapping("/kysymykset")
+	@ResponseBody List<Kysymys> kysymykset() {
+		return kysymysRepo.findAll();
+	}
+	
+	// getById
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
 	}
 	
 	
-	//Vastaus RESTit
+	// **** Vastaus RESTit **** //
 	
-	@Autowired VastausRepository vastausRepo;
+	@Autowired 
+	private VastausRepository vastausRepo;
 	
-	//REST Etsii kaikki vastaukset
+	// Etsii ja palauttaa kaikki vastaukset
 	@GetMapping("/vastaukset")
 	@ResponseBody List<Vastaus> vastaukset() {
 		return vastausRepo.findAll();
@@ -62,8 +60,22 @@ public class RESTController {
 	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
 	}
-	@GetMapping("/kysely/{id}")
+	
+	// **** Kysely RESTit **** //
+  
+  @Autowired
+	private KyselyRepository kyselyRepo;
+	
+	// Etsii ja palauttaa kaikki kyselyt
+	@GetMapping("/kyselyt")
+	@ResponseBody List<Kysely> kyselyt() {
+		return kyselyRepo.findAll();
+	}
+	
+	// getById
+	@GetMapping("kyselyt/{id}")
 	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long kyselyId) {
 		return kyselyRepo.findById(kyselyId);
 	}
+	
 }
