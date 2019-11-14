@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
@@ -21,18 +22,18 @@ public class RESTController {
 	@Autowired
 	private KysymysRepository kysymysRepo;
 	
+	//REST homepage
+	@GetMapping("/resthome")
+	public String restHomePage() {
+		return "resthome";
+	}
+	
 	//KysymysRESTit
 	
 	//REST Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
 	@ResponseBody List<Kysymys> kysymykset() {
 		return kysymysRepo.findAll();
-	}
-	
-	//REST homepage
-	@GetMapping("/resthome")
-	public String restHomePage() {
-		return "resthome";
 	}
 	
 	//REST getById
@@ -57,4 +58,16 @@ public class RESTController {
 	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
 	}
+	
+	//REST etsii kaikki vastaukset tietystä kysymyksestä
+	@GetMapping("/kyselyt/{id}/kysymykset") //id = kyselyId
+	public @ResponseBody List<Kysymys> findKyselynKysymykset(@PathVariable("id") Long kyselyId) {
+		return kysymysRepo.findByKysely(kyselyId);
+	}
+	
+	//Kysely RESTit
+	
+	@Autowired KyselyRepository kyselyRepo;
+	
+
 }
