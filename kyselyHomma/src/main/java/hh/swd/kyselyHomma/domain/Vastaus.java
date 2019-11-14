@@ -16,7 +16,7 @@ public class Vastaus {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;
 	
 	
