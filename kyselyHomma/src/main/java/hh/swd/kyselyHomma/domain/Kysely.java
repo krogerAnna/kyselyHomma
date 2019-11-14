@@ -24,16 +24,13 @@ public class Kysely {
 	//konstruktorit
 	public Kysely() {}
 
-	public Kysely(Long kyselyId, String nimi, List<Kysymys> kysymykset) {
+	public Kysely(String nimi) {
 		super();
-		this.kyselyId = kyselyId;
 		this.nimi = nimi;
-		this.kysymykset = kysymykset;
 	}
 
 	
 	//setterit
-	
 	public void setKyselyId(Long kyselyId) {
 		this.kyselyId = kyselyId;
 	}
@@ -47,7 +44,6 @@ public class Kysely {
 	}
 
 	//getterit
-	
 	public Long getKyselyId() {
 		return kyselyId;
 	}
@@ -61,13 +57,9 @@ public class Kysely {
 	}
 
 	//toString
-	
 	@Override
 	public String toString() {
 		return "Kysely [kyselyId=" + kyselyId + ", nimi=" + nimi + ", kysymykset=" + kysymykset + "]";
 	}
-	
-	
-	
 	
 }
