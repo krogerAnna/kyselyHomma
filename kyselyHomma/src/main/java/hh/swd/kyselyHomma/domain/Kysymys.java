@@ -15,10 +15,10 @@ public class Kysymys {
 	//attribuutit
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kysymysId;
 	private String content;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="vastaus")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
 	
@@ -31,8 +31,8 @@ public class Kysymys {
 	}
 
 	//getterit
-	public Long getId() {
-		return id;
+	public Long getKysymysId() {
+		return kysymysId;
 	}
 
 	public String getContent() {
@@ -44,8 +44,8 @@ public class Kysymys {
 	}
 	
 	//setterit
-	public void setId(Long id) {
-		this.id = id;
+	public void setKysymysId(Long id) {
+		this.kysymysId = id;
 	}
 
 	public void setContent(String content) {
