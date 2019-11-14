@@ -78,5 +78,119 @@
 		}
 		</code>
 	</pre>
+	
+	<h2>Kaikki vastaukset</h2>
+	<p>
+		<strong>Method:</strong> GET 
+		<strong>Endpoint:</strong> 
+		<strong><a href="/vastaukset">/vastaukset</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+			[{
+				"vastausId":7,
+				"content":"Opiskelija",
+				"kysymys":
+				{
+				"kysymysId":1,
+				"content":"Status?"
+				}
+				},
+				{
+				"vastausId":8,
+				"content":"En ikinä",
+				"kysymys":
+				{
+				"kysymysId":2,
+				"content":"Kuinka usein asioit kouluruokalassa?"
+				}
+				},
+				{
+				"vastausId":9,
+				"content":"Olen nirso",
+				"kysymys":
+				{
+				"kysymysId":3,
+				"content":"Jos et asioi ollenkaan tai todella harvoin niin miksi?"
+				}
+				},
+				{
+				"vastausId":10,
+				"content":"Parempi ruoka",
+				"kysymys":{
+				"kysymysId":4,
+				"content":"Mikä lisäisi/parantaisi ruokalassa asioimistasi?"
+				}
+				},
+				{
+				"vastausId":11,
+				"content":"-",
+				"kysymys":
+				{
+				"kysymysId":5,
+				"content":"Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:"
+				}
+				},
+				{
+				"vastausId":12,
+				"content":"Ei tule mitään mieleen.",
+				"kysymys":
+				{
+				"kysymysId":6,
+				"content":"Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:"
+				}
+				}]
+		</code>
+	</pre>
+	<h2>Vastaus By ID</h2>
+	<p>
+		<strong> GET </strong>
+		<strong> /vastaukset/{id} </strong> 
+		<strong><a href="/vastaukset/7">/vastaukset/7</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+		{
+		"vastausId":7,
+		"content":"Opiskelija",
+		"kysymys":
+		{
+		"kysymysId":1,
+		"content":"Status?"
+		}
+		}
+		</code>
+	</pre>
+	<!-- 
+	<h2>Uusi vastaus</h2>
+	<a href="/lisaakysymys">Luo uusi vastaus</a>
+	<p>
+		<strong> POST </strong> 
+		<strong> /vastaukset</strong> 
+		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+		{
+		"vastausId":11,
+		"content":"Opiskelija",
+		"kysymys":
+		{
+		"kysymysId":1,
+		"content":"Status?"
+		}
+		}
+		</code>
+	</pre>
+	-->
 </body>
 </html>

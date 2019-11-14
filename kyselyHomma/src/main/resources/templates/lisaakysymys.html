@@ -16,7 +16,7 @@
 	<table>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.content}"></td>
-			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}">Poista</a></td>	
+			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.kysymysId})}">Poista</a></td>	
 		</tr>
 	</table>
 	<br />
