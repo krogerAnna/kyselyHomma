@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import hh.swd.kyselyHomma.domain.Kysely;
+import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
@@ -20,6 +22,9 @@ public class RESTController {
 
 	@Autowired
 	private KysymysRepository kysymysRepo;
+	
+	@Autowired
+	private KyselyRepository kyselyRepo;
 	
 	//KysymysRESTit
 	
@@ -56,5 +61,9 @@ public class RESTController {
 	@GetMapping("vastaukset/{id}")
 	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
+	}
+	@GetMapping("/kysely/{id}")
+	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long kyselyId) {
+		return kyselyRepo.findById(kyselyId);
 	}
 }
