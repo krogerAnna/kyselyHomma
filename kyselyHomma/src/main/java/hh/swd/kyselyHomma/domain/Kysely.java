@@ -17,7 +17,7 @@ public class Kysely {
 	private Long kyselyId;
 	private String nimi;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
 	private List<Kysymys> kysymykset;
 	
 	

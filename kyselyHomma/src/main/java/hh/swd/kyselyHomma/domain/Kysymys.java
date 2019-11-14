@@ -23,7 +23,7 @@ public class Kysymys {
 	private List<Vastaus> vastaukset;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
 	
