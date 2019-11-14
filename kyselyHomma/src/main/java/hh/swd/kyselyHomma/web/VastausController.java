@@ -18,5 +18,4 @@ public class VastausController {
 	public void saveVastaus(Vastaus vastaus) {
 		repository.save(vastaus);
 	}
-
 }
