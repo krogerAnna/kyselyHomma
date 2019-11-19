@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 
 import hh.swd.kyselyHomma.domain.Kysely;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
-import hh.swd.kyselyHomma.domain.Kysymys;
-import hh.swd.kyselyHomma.domain.KysymysRepository;
-import hh.swd.kyselyHomma.domain.Vastaus;
-import hh.swd.kyselyHomma.domain.VastausRepository;
+import hh.swd.kyselyHomma.domain.Question;
+import hh.swd.kyselyHomma.domain.QuestionRepository;
+import hh.swd.kyselyHomma.domain.Answer;
+import hh.swd.kyselyHomma.domain.AnswerRepository;
 
 @SpringBootApplication
 public class KyselyHommaApplication {
@@ -19,19 +19,19 @@ public class KyselyHommaApplication {
 		SpringApplication.run(KyselyHommaApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo) {
+	public CommandLineRunner demo(QuestionRepository kysymysRepo, AnswerRepository vastausRepo, KyselyRepository kyselyRepo) {
 		return (args)  -> {	
 			
 			Kysely kouluRuoka = new Kysely("Kouluruokala");
 			kyselyRepo.save(kouluRuoka);
 			
 			 
-			Kysymys q = new Kysymys("Status?", kouluRuoka);
-			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka);
-			Kysymys e = new Kysymys("Jos et asioi ollenkaan tai todella harvoin niin miksi?", kouluRuoka);
-			Kysymys r = new Kysymys("Mikä lisäisi/parantaisi ruokalassa asioimistasi?", kouluRuoka);
-			Kysymys t = new Kysymys("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:", kouluRuoka);
-			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", kouluRuoka);
+			Question q = new Question("Status?");
+			Question w = new Question("Kuinka usein asioit kouluruokalassa?");
+			Question e = new Question("Jos et asioi ollenkaan tai todella harvoin niin miksi?");
+			Question r = new Question("Mikä lisäisi/parantaisi ruokalassa asioimistasi?");
+			Question t = new Question("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:");
+			Question y = new Question("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:");
 			
 			kysymysRepo.save(q);
 			kysymysRepo.save(w);
@@ -40,12 +40,12 @@ public class KyselyHommaApplication {
 			kysymysRepo.save(t);
 			kysymysRepo.save(y);
 			
-			vastausRepo.save(new Vastaus("Opiskelija", q));
-			vastausRepo.save(new Vastaus("En ikinä", w));
-			vastausRepo.save(new Vastaus("Olen nirso", e));
-			vastausRepo.save(new Vastaus("Parempi ruoka", r));
-			vastausRepo.save(new Vastaus("-", t));
-			vastausRepo.save(new Vastaus("Ei tule mitään mieleen.", y));
+			vastausRepo.save(new Answer("Opiskelija", q));
+			vastausRepo.save(new Answer("En ikinä", w));
+			vastausRepo.save(new Answer("Olen nirso", e));
+			vastausRepo.save(new Answer("Parempi ruoka", r));
+			vastausRepo.save(new Answer("-", t));
+			vastausRepo.save(new Answer("Ei tule mitään mieleen.", y));
 			
 			
 		

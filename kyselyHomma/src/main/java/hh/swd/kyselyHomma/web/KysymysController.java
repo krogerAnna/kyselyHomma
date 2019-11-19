@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.swd.kyselyHomma.domain.Kysymys;
-import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.Question;
+import hh.swd.kyselyHomma.domain.QuestionRepository;
  
 @Controller
 public class KysymysController {
 
 
-	private final KysymysRepository repository;
+	private final QuestionRepository repository;
 	
 	
-	KysymysController (KysymysRepository repository) {
+	KysymysController (QuestionRepository repository) {
 		this.repository = repository;
 	}
 	
@@ -42,14 +42,14 @@ public class KysymysController {
 	//Annetaan model attributet Thymeleaf-templatelle
 	@GetMapping("/lisaakysymys")
 	public String lisaaKysymys(Model model) {
-		model.addAttribute("kysymys", new Kysymys());
+		model.addAttribute("kysymys", new Question());
 		model.addAttribute("kysymykset", repository.findAll());
 		return "lisaakysymys";
 	}
 	
 	//Tallentaa uuden kysymyksen
 	@PostMapping("/save")
-	public String save(Kysymys kysymys) {
+	public String save(Question kysymys) {
 		repository.save(kysymys);
 		return "redirect:lisaakysymys";
 	}

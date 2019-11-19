@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Vastaus {
+public class Answer {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -18,15 +18,15 @@ public class Vastaus {
 	
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
-	private Kysymys kysymys;
+	private Question kysymys;
 	
 	
 	//konstruktorit
-	public Vastaus() {
+	public Answer() {
 		super();
 	}
 
-	public Vastaus(String content, Kysymys kysymys) {
+	public Answer(String content, Question kysymys) {
 		super();
 		this.content = content;
 		this.kysymys = kysymys;
@@ -41,7 +41,7 @@ public class Vastaus {
 		this.content = content;
 	}
 
-	public void setKysymys(Kysymys kysymys) {
+	public void setKysymys(Question kysymys) {
 		this.kysymys = kysymys;
 	}
 	
@@ -54,7 +54,7 @@ public class Vastaus {
 		return content;
 	}
 
-	public Kysymys getKysymys() {
+	public Question getKysymys() {
 		return kysymys;
 	}
 

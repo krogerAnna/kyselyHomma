@@ -10,46 +10,47 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import hh.swd.kyselyHomma.domain.Kysymys;
-import hh.swd.kyselyHomma.domain.KysymysRepository;
-import hh.swd.kyselyHomma.domain.Vastaus;
-import hh.swd.kyselyHomma.domain.VastausRepository;
+import hh.swd.kyselyHomma.domain.Question;
+import hh.swd.kyselyHomma.domain.QuestionRepository;
+import hh.swd.kyselyHomma.domain.Answer;
+import hh.swd.kyselyHomma.domain.AnswerRepository;
 
 @Controller
 public class RESTController {
 
 	@Autowired
-	private KysymysRepository kysymysRepo;
+	private QuestionRepository kysymysRepo;
 	
 	//KysymysRESTit
 	
 	//REST Etsii ja palauttaa kaikki kysymykset
 	@GetMapping("/kysymykset")
-	@ResponseBody List<Kysymys> kysymykset() {
+	@ResponseBody List<Question> kysymykset() {
 		return kysymysRepo.findAll();
 	}
 	
 	
+	
 	//REST getById
 	@GetMapping("/kysymykset/{id}")
-	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long kysymysId) {
+	public @ResponseBody Optional<Question> findKysymysRest(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
 	}
 	
 	
 	//Vastaus RESTit
 	
-	@Autowired VastausRepository vastausRepo;
+	@Autowired AnswerRepository vastausRepo;
 	
 	//REST Etsii kaikki vastaukset
 	@GetMapping("/vastaukset")
-	@ResponseBody List<Vastaus> vastaukset() {
+	@ResponseBody List<Answer> vastaukset() {
 		return vastausRepo.findAll();
 	}
 	
 	// getById
 	@GetMapping("vastaukset/{id}")
-	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
+	public @ResponseBody Optional<Answer> findVastausRest(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
 	}
 }

@@ -4,7 +4,7 @@ package hh.swd.kyselyHomma.domain;
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.repository.CrudRepository;
 
-public interface VastausRepository extends JpaRepository<Vastaus, Long> {
+public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
 	//List<Kysymys> findByContent(String content);
 }

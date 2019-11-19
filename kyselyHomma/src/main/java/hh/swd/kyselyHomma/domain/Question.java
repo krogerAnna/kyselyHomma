@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Kysymys {
+public class Question {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -23,20 +23,20 @@ public class Kysymys {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
-	private List<Vastaus> vastaukset;
+	private List<Answer> vastaukset;
 	
-	@ManyToOne
-	@JoinColumn(name="kyselyId")
-	private Kysely kysely;
+//	@ManyToOne
+//	@JoinColumn(name="kyselyId")
+//	private Kysely kysely;
 	
 	
 	//konstuktorit
-	public Kysymys() {}
+	public Question() {}
 	
-	public Kysymys(String content, Kysely kysely) {
+	public Question(String content /*Kysely kysely*/) {
 		super();
 		this.content = content;
-		this.kysely = kysely;
+//		this.kysely = kysely;
 
 	}
 	
@@ -49,13 +49,13 @@ public class Kysymys {
 		this.content = content;
 	}
 	
-	public void setVastaukset(List<Vastaus> vastaukset) {
+	public void setVastaukset(List<Answer> vastaukset) {
 		this.vastaukset = vastaukset;
 	}
 	
-	public void setKysely(Kysely kysely) {
-		this.kysely = kysely;
-	}
+//	public void setKysely(Kysely kysely) {
+//		this.kysely = kysely;
+//	}
 	
 	//getterit
 	public Long getKysymysId() {
@@ -66,19 +66,19 @@ public class Kysymys {
 		return content;
 	}
 	
-	public List<Vastaus> getVastaukset() {
+	public List<Answer> getVastaukset() {
 		return vastaukset;
 	}
 	
-	public Kysely getKysely() {
-		return kysely;
-	}
+//	public Kysely getKysely() {
+//		return kysely;
+//	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Kysymys [kysymysId=" + kysymysId + ", content=" + content + ", vastaukset=" + vastaukset + ", kysely="
-				+ kysely + "]";
+		return "Kysymys [kysymysId=" + kysymysId + ", content=" + content + ", vastaukset=" + vastaukset /*+ ", kysely="
+				+ kysely*/ + "]";
 	}
 	
 }

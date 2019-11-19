@@ -19,9 +19,9 @@ public class Kysely {
 	private Long kyselyId;
 	private String nimi;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
-	private List<Kysymys> kysymykset;
+//	@JsonIgnore
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
+//	private List<Kysymys> kysymykset;
 	
 	
 	//konstruktorit
@@ -42,9 +42,9 @@ public class Kysely {
 		this.nimi = nimi;
 	}
 
-	public void setKysymykset(List<Kysymys> kysymykset) {
-		this.kysymykset = kysymykset;
-	}
+//	public void setKysymykset(List<Kysymys> kysymykset) {
+//		this.kysymykset = kysymykset;
+//	}
 
 	//getterit
 	public Long getKyselyId() {
@@ -55,14 +55,14 @@ public class Kysely {
 		return nimi;
 	}
 
-	public List<Kysymys> getKysymykset() {
-		return kysymykset;
-	}
+//	public List<Kysymys> getKysymykset() {
+//		return kysymykset;
+//	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Kysely [kyselyId=" + kyselyId + ", nimi=" + nimi + ", kysymykset=" + kysymykset + "]";
+		return "Kysely [kyselyId=" + kyselyId + ", nimi=" + nimi /*+ ", kysymykset=" + kysymykset + "*/+ "]";
 	}
 	
 }

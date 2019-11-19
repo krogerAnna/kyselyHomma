@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import hh.swd.kyselyHomma.domain.Kysymys;
-import hh.swd.kyselyHomma.domain.Vastaus;
-import hh.swd.kyselyHomma.domain.VastausRepository;
+import hh.swd.kyselyHomma.domain.Question;
+import hh.swd.kyselyHomma.domain.Answer;
+import hh.swd.kyselyHomma.domain.AnswerRepository;
 
 
 @Controller
 public class VastausController {
 
-	private final VastausRepository vrepository;
+	private final AnswerRepository vrepository;
 	
-	VastausController ( VastausRepository vrepository ) {
+	VastausController ( AnswerRepository vrepository ) {
 		this.vrepository = vrepository;
 	}
 	
 	@PostMapping("/savevastaus")
-	public void saveVastaus(Vastaus vastaus) {
+	public void saveVastaus(Answer vastaus) {
 		vrepository.save(vastaus);
 	}
 
