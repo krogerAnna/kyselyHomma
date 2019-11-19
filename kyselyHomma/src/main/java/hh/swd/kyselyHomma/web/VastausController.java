@@ -10,10 +10,11 @@ public class VastausController {
 
 	private final VastausRepository repository;
 	
-	VastausController ( VastausRepository repository ) {
+	VastausController (VastausRepository repository) {
 		this.repository = repository;
 	}
 	
+	//Tallentaa uuden vastauksen
 	@PostMapping("/savevastaus")
 	public void saveVastaus(Vastaus vastaus) {
 		repository.save(vastaus);

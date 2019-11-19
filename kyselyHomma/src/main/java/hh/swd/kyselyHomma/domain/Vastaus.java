@@ -18,7 +18,6 @@ public class Vastaus {
 	private Long vastausId;
 	private String content;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;

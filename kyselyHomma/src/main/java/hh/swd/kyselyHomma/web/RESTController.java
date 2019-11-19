@@ -37,7 +37,7 @@ public class RESTController {
 	
 	// getById
 	@GetMapping("/kysymykset/{id}")
-	public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long kysymysId) {
+	public @ResponseBody Optional<Kysymys> findKysymys(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
 	}
 	
@@ -54,8 +54,8 @@ public class RESTController {
 	}
 	
 	// getById
-	@GetMapping("vastaukset/{id}")
-	public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long vastausId) {
+	@GetMapping("/vastaukset/{id}")
+	public @ResponseBody Optional<Vastaus> findVastaus(@PathVariable("id") Long vastausId) {
 		return vastausRepo.findById(vastausId);
 	}
 	
@@ -71,8 +71,8 @@ public class RESTController {
 	}
 	
 	// getById
-	@GetMapping("kyselyt/{id}")
-	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long kyselyId) {
+	@GetMapping("/kyselyt/{id}")
+	public @ResponseBody Optional<Kysely> findKysely(@PathVariable("id") Long kyselyId) {
 		return kyselyRepo.findById(kyselyId);
 	}
 	
