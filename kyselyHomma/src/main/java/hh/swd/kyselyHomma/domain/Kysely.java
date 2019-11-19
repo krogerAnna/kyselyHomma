@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Kysely {
@@ -15,18 +17,19 @@ public class Kysely {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long kyselyId;
-	private String nimi;
+	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
 	private List<Kysymys> kysymykset;
 	
 	
 	//konstruktorit
 	public Kysely() {}
 
-	public Kysely(String nimi) {
+	public Kysely(String name) {
 		super();
-		this.nimi = nimi;
+		this.name = name;
 	}
 
 	
@@ -35,8 +38,8 @@ public class Kysely {
 		this.kyselyId = kyselyId;
 	}
 
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setKysymykset(List<Kysymys> kysymykset) {
@@ -48,8 +51,8 @@ public class Kysely {
 		return kyselyId;
 	}
 
-	public String getNimi() {
-		return nimi;
+	public String getName() {
+		return name;
 	}
 
 	public List<Kysymys> getKysymykset() {
@@ -59,7 +62,7 @@ public class Kysely {
 	//toString
 	@Override
 	public String toString() {
-		return "Kysely [kyselyId=" + kyselyId + ", nimi=" + nimi + ", kysymykset=" + kysymykset + "]";
+		return "Kysely [kyselyId=" + kyselyId + ", name=" + name + ", kysymykset=" + kysymykset + "]";
 	}
 	
 }

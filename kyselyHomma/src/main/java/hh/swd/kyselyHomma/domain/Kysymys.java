@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Kysymys {
 	
@@ -19,11 +21,12 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
 	
@@ -34,6 +37,7 @@ public class Kysymys {
 		super();
 		this.content = content;
 		this.kysely = kysely;
+
 	}
 	
 	//setterit

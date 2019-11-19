@@ -6,19 +6,16 @@
 </head>
 <body>
 	<div>
-		<form th:object="${kysymys}" th:action="@{save}" action="#" method="post">
-			<label for="content">Uusi kysymys</label> 
-			<input type="text" id="content" th:field="*{content}" /> 
-			
+		<h1>Luo uusi kysymys</h1>
+		<form th:object="${kysymys}" th:action="@{savekysymys}" action="#" method="post">
+			<p>Kysymys: <input type="text" id="content" th:field="*{content}" /> </p>
+			<label for="list">Kysely: </label>
+			<select id="list" th:field="*{kysely}" class="form-control">
+	    		<option th:each="kysely: ${kyselyt}" th:value="${kysely.kyselyId}" th:text="${kysely.name}"></option>
+	  		</select>
 			<input type="submit" value="Tallenna"></input>
 		</form>
-		<h1>Kysymykset</h1>
-	<table>
-		<tr th:each="kysymys : ${kysymykset}">
-			<td th:text="${kysymys.content}"></td>
-			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}">Poista</a></td>	
-		</tr>
-	</table>
+	<p>Huom! Kysymystä luodessa ei vielä voi lisätä sitä mihinkään kyselyyn!</p>
 	<br />
 	<a href="/resthome">REST Homepage</a>
 	</div>
