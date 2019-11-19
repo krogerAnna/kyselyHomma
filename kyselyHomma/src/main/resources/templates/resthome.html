@@ -53,6 +53,27 @@
 	]
 		</code>
 	</pre>
+	
+		<h2>Luo uusi vastaus</h2>
+	<p>
+		<strong> POST </strong> 
+		<strong> /vastaukset</strong> 
+		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+	{
+	content: "Opiskelija",
+	kysymys: {
+		kysymysId: 2,
+		}
+	}
+		</code>
+	</pre>
+	
 	<h2>Kysymys By ID</h2>
 	<p>
 		<strong> GET </strong>
@@ -184,7 +205,7 @@
 	<a href="/lisaakysymys">Luo uusi kysymys</a>
 	<p>
 		<strong> POST </strong> 
-		<strong> /kysymykset</strong> 
+		<strong> /kysymykset (ei toimi atm)</strong> 
 		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
 	</p>
 	<p>
@@ -206,30 +227,6 @@
 	
 	
 	
-	<h2>Luo uusi vastaus</h2>
-	<p>
-		<strong> POST </strong> 
-		<strong> /vastaukset</strong> 
-		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	{
-	vastausId: 100,
-	content: "Opiskelija",
-	kysymys: {
-		kysymysId: 2,
-		content: "Status?",
-			kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		}
-	}
-		</code>
-	</pre>
+
 </body>
 </html>
