@@ -25,7 +25,6 @@ public class Kysymys {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
@@ -37,6 +36,7 @@ public class Kysymys {
 	public Kysymys(String content, Kysely kysely) {
 		super();
 		this.content = content;
+		this.kysely = kysely;
 
 	}
 	
