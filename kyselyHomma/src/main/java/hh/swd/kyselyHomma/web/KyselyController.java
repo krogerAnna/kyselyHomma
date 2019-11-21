@@ -47,8 +47,9 @@ public class KyselyController {
 							//}
 							
 		@GetMapping("/kyselyt/{id}/kysymykset")
-		public @ResponseBody Optional<Kysely> findByKysely(@PathVariable("id") Long kyselyId) {
-			return kyselyRepo.findById(kyselyId);
+		public @ResponseBody List<Kysymys> findByKysely(@PathVariable("id") Long kyselyId) {
+			Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
+			return kysymysRepo.findAllByKysely(kysely);
 		}//ei toimi vielä
 	
 	
