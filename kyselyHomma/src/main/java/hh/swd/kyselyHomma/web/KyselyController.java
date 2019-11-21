@@ -37,20 +37,17 @@ public class KyselyController {
 			return kyselyRepo.findById(kyselyId);
 		}
 		
+		//tietyn kyselyn kaikki vastaukset voi hakea
+		//todo
+		
 		
 		// kaikki x-kyselyn kysymykset
-		
-			// Etsii ja palauttaa kaikki kysymykset
-							//@GetMapping("/kysymykset")
-							//@ResponseBody List<Kysymys> kysymykset() {
-							//	return kysymysRepo.findAll();
-							//}
-							
+
 		@GetMapping("/kyselyt/{id}/kysymykset")
 		public @ResponseBody List<Kysymys> findByKysely(@PathVariable("id") Long kyselyId) {
 			Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
 			return kysymysRepo.findAllByKysely(kysely);
-		}//ei toimi vielä
+		}
 	
 	
 }

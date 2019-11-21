@@ -19,19 +19,26 @@ public class KyselyHommaApplication {
 		SpringApplication.run(KyselyHommaApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo) {
+	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo, TypeRepository typeRepo) {
 		return (args)  -> {	
+			
+			Type tyyppi1 = new Type("open");
+			Type tyyppi2 = new Type("dropdown");
+			Type tyyppi3 = new Type("multiplechoice");
+			typeRepo.save(tyyppi1);
+			typeRepo.save(tyyppi2);
+			typeRepo.save(tyyppi3);
 			
 			//eka kysely
 			Kysely kouluRuoka = new Kysely("Kouluruokala");
 			kyselyRepo.save(kouluRuoka);
 			 
-			Kysymys q = new Kysymys("Status?", kouluRuoka);
-			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka);
-			Kysymys e = new Kysymys("Jos et asioi ollenkaan tai todella harvoin niin miksi?", kouluRuoka);
-			Kysymys r = new Kysymys("Mikä lisäisi/parantaisi ruokalassa asioimistasi?", kouluRuoka);
-			Kysymys t = new Kysymys("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:", kouluRuoka);
-			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", kouluRuoka);
+			Kysymys q = new Kysymys("Status?", kouluRuoka, tyyppi2);
+			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka, tyyppi1);
+			Kysymys e = new Kysymys("Jos et asioi ollenkaan tai todella harvoin niin miksi?", kouluRuoka, tyyppi1);
+			Kysymys r = new Kysymys("Mikä lisäisi/parantaisi ruokalassa asioimistasi?", kouluRuoka, tyyppi3);
+			Kysymys t = new Kysymys("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:", kouluRuoka, tyyppi1);
+			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", kouluRuoka, tyyppi1);
 			
 			kysymysRepo.save(q);
 			kysymysRepo.save(w);
