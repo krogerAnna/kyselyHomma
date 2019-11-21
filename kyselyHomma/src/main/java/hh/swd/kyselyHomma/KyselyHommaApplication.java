@@ -9,6 +9,8 @@ import hh.swd.kyselyHomma.domain.Kysely;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.Type;
+import hh.swd.kyselyHomma.domain.TypeRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
@@ -59,9 +61,9 @@ public class KyselyHommaApplication {
 			Kysely miniKysely = new Kysely("Kulttuurivinkkaus -kysely");
 			kyselyRepo.save(miniKysely);
 			
-			Kysymys a = new Kysymys("Mitä elokuvaa suosittelet?", miniKysely);
-			Kysymys b = new Kysymys("Mitä tv-sarjaa suosittelet?", miniKysely);
-			Kysymys c = new Kysymys("Mitä musiikkia suosittelet?", miniKysely);
+			Kysymys a = new Kysymys("Mitä elokuvaa suosittelet?", miniKysely, tyyppi1);
+			Kysymys b = new Kysymys("Mitä tv-sarjaa suosittelet?", miniKysely, tyyppi1);
+			Kysymys c = new Kysymys("Mitä musiikkia suosittelet?", miniKysely, tyyppi1);
 			
 			kysymysRepo.save(a);
 			kysymysRepo.save(b);
