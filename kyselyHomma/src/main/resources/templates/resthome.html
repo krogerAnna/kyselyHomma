@@ -17,32 +17,63 @@
 	</p>
 	<pre>
 		<code>
-			[{
-				"id":1,
-				"content":"Status?"
-			},
-			{
-				"id":2,
-				"content":"Kuinka usein asioit kouluruokalassa?"
-			},
-			{
-				"id":3,
-				"content":"Jos et asioi ollenkaan tai todella harvoin niin miksi?"
-			},
-			{
-				"id":4,
-				"content":"Mikä lisäisi/parantaisi ruokalassa asioimistasi?"
-			},
-			{
-				"id":5,
-				"content":"Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:"
-			},
-			{
-				"id":6,
-				"content":"Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:"
-			}]
+	[
+		{
+		kysymysId: 2,
+		content: "Status?",
+		kysely: {
+			kyselyId: 1,
+			name: "Kouluruokala"
+			}
+		},
+		{
+		kysymysId: 3,
+		content: "Kuinka usein asioit kouluruokalassa?",
+		kysely: {
+			kyselyId: 1,
+			name: "Kouluruokala"
+			}
+		},
+		{
+		kysymysId: 4,
+		content: "Jos et asioi ollenkaan tai todella harvoin niin miksi?",
+		kysely: {
+			kyselyId: 1,
+			name: "Kouluruokala"
+			}
+		},
+		{
+		kysymysId: 5,
+		content: "Mikä lisäisi/parantaisi ruokalassa asioimistasi?",
+		kysely: {
+			kyselyId: 1,
+			name: "Kouluruokala"
+			}
+		}
+	]
 		</code>
 	</pre>
+	
+		<h2>Luo uusi vastaus</h2>
+	<p>
+		<strong> POST </strong> 
+		<strong> /vastaukset</strong> 
+		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+	{
+	content: "Opiskelija",
+	kysymys: {
+		kysymysId: 2,
+		}
+	}
+		</code>
+	</pre>
+	
 	<h2>Kysymys By ID</h2>
 	<p>
 		<strong> GET </strong>
@@ -54,28 +85,14 @@
 	</p>
 	<pre>
 		<code>
-		{
-			"id":2,
-			"content":"Kuinka usein asioit kouluruokalassa?"
+	{
+	kysymysId: 2,
+	content: "Status?",
+		kysely: {
+		kyselyId: 1,
+		name: "Kouluruokala"
 		}
-		</code>
-	</pre>
-	<h2>Uusi Kysymys</h2>
-	<a href="/lisaakysymys">Luo uusi kysymys</a>
-	<p>
-		<strong> POST </strong> 
-		<strong> /kysymykset</strong> 
-		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-		{
-			"id":7,
-			"content":"Are you wanna die?"
-		}
+	}
 		</code>
 	</pre>
 	
@@ -90,89 +107,105 @@
 	</p>
 	<pre>
 		<code>
-			[{
-				"vastausId":7,
-				"content":"Opiskelija",
-				"kysymys":
-				{
-				"kysymysId":1,
-				"content":"Status?"
+	[
+		{
+		vastausId: 8,
+		content: "Opiskelija",
+		kysymys: {
+			kysymysId: 2,
+			content: "Status?",
+				kysely: {
+				kyselyId: 1,
+				name: "Kouluruokala"
 				}
-				},
-				{
-				"vastausId":8,
-				"content":"En ikinä",
-				"kysymys":
-				{
-				"kysymysId":2,
-				"content":"Kuinka usein asioit kouluruokalassa?"
+			}
+		},
+		{
+		vastausId: 9,
+		content: "En ikinä",
+		kysymys: {
+			kysymysId: 3,
+			content: "Kuinka usein asioit kouluruokalassa?",
+				kysely: {
+				kyselyId: 1,
+				name: "Kouluruokala"
 				}
-				},
-				{
-				"vastausId":9,
-				"content":"Olen nirso",
-				"kysymys":
-				{
-				"kysymysId":3,
-				"content":"Jos et asioi ollenkaan tai todella harvoin niin miksi?"
-				}
-				},
-				{
-				"vastausId":10,
-				"content":"Parempi ruoka",
-				"kysymys":{
-				"kysymysId":4,
-				"content":"Mikä lisäisi/parantaisi ruokalassa asioimistasi?"
-				}
-				},
-				{
-				"vastausId":11,
-				"content":"-",
-				"kysymys":
-				{
-				"kysymysId":5,
-				"content":"Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:"
-				}
-				},
-				{
-				"vastausId":12,
-				"content":"Ei tule mitään mieleen.",
-				"kysymys":
-				{
-				"kysymysId":6,
-				"content":"Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:"
-				}
-				}]
+			}
+		}
+	]
 		</code>
 	</pre>
 	<h2>Vastaus By ID</h2>
 	<p>
 		<strong> GET </strong>
 		<strong> /vastaukset/{id} </strong> 
-		<strong><a href="/vastaukset/7">/vastaukset/7</a></strong>
+		<strong><a href="/vastaukset/8">/vastaukset/8</a></strong>
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
 	</p>
 	<pre>
 		<code>
-		{
-		"vastausId":7,
-		"content":"Opiskelija",
-		"kysymys":
-		{
-		"kysymysId":1,
-		"content":"Status?"
+	{
+	vastausId: 8,
+	content: "Opiskelija",
+	kysymys: {
+		kysymysId: 2,
+		content: "Status?",
+			kysely: {
+			kyselyId: 1,
+			name: "Kouluruokala"
+			}
 		}
-		}
+	}
 		</code>
 	</pre>
-	<!-- 
-	<h2>Uusi vastaus</h2>
-	<a href="/lisaakysymys">Luo uusi vastaus</a>
+		<h2>Kaikki kyselyt</h2>
+	<p>
+		<strong>Method:</strong> GET 
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kyselyt">/kyselyt</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+[
+	{
+		kyselyId: 1,
+		name: "Kouluruokala"
+	},
+	{
+		kyselyId: 14,
+		name: "Kulttuurivinkkaus -kysely"
+	}
+]
+		</code>
+	</pre>
+	<h2>Kysely By ID</h2>
+	<p>
+		<strong> GET </strong>
+		<strong> /kyselyt/{id} </strong> 
+		<strong><a href="/kyselyt/1">/kyselyt/1</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre>
+		<code>
+	{
+		kyselyId: 1,
+		name: "Kouluruokala"
+	}
+		</code>
+	</pre>
+
+	<h2>Luo uusi Kysymys</h2>
+	<a href="/lisaakysymys">Luo uusi kysymys</a>
 	<p>
 		<strong> POST </strong> 
-		<strong> /vastaukset</strong> 
+		<strong> /kysymykset (ei toimi atm)</strong> 
 		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
 	</p>
 	<p>
@@ -181,16 +214,19 @@
 	<pre>
 		<code>
 		{
-		"vastausId":11,
-		"content":"Opiskelija",
-		"kysymys":
-		{
-		"kysymysId":1,
-		"content":"Status?"
-		}
+			"id":7,
+			"content":"Are you wanna die?",
+			kysely: {
+				kyselyId: 1,
+				name: "Kouluruokala"
+				}
 		}
 		</code>
 	</pre>
-	-->
+	
+	
+	
+	
+
 </body>
 </html>
