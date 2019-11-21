@@ -37,6 +37,9 @@ public class KyselyController {
 			return kyselyRepo.findById(kyselyId);
 		}
 		
+		//tietyn kyselyn kaikki vastaukset voi hakea
+		
+		
 		
 		// kaikki x-kyselyn kysymykset
 		
@@ -46,7 +49,7 @@ public class KyselyController {
 							//	return kysymysRepo.findAll();
 							//}
 							
-		@GetMapping("/kyselyt/{id}/kysymykset")
+		@GetMapping("/kyselyt/{id}/kysymykset")// -> tässä siis id nimenomaan kyselyId
 		public @ResponseBody Optional<Kysely> findByKysely(@PathVariable("id") Long kyselyId) {
 			return kyselyRepo.findById(kyselyId);
 		}//ei toimi vielä
