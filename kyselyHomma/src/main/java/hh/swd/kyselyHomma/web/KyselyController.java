@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd.kyselyHomma.domain.Kysely;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
+import hh.swd.kyselyHomma.domain.Kysymys;
+import hh.swd.kyselyHomma.domain.KysymysRepository;
 
 @Controller
 public class KyselyController {
@@ -20,6 +22,8 @@ public class KyselyController {
 	  
 	  @Autowired
 		private KyselyRepository kyselyRepo;
+	  @Autowired
+	  private KysymysRepository kysymysRepo;
 		
 		// Etsii ja palauttaa kaikki kyselyt
 		@GetMapping("/kyselyt")
@@ -35,16 +39,17 @@ public class KyselyController {
 		
 		
 		// kaikki x-kyselyn kysymykset
-		/*	// Etsii ja palauttaa kaikki kysymykset
-		@GetMapping("/kysymykset")
-		@ResponseBody List<Kysymys> kysymykset() {
-			return kysymysRepo.findAll();
-		}*/ //ei toimi vielä
-		/*@GetMapping("/kyselyt/{id}/kysymykset")
+		
+			// Etsii ja palauttaa kaikki kysymykset
+							//@GetMapping("/kysymykset")
+							//@ResponseBody List<Kysymys> kysymykset() {
+							//	return kysymysRepo.findAll();
+							//}
+							
+		@GetMapping("/kyselyt/{id}/kysymykset")
 		public @ResponseBody Optional<Kysely> findByKysely(@PathVariable("id") Long kyselyId) {
-			
 			return kyselyRepo.findById(kyselyId);
-		}*/
+		}//ei toimi vielä
 	
 	
 }
