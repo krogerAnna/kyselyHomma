@@ -19,3 +19,4 @@ public class VastausController {
 		repository.save(vastaus);
 	}
 }
+

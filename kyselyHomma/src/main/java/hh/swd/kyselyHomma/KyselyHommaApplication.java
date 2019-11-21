@@ -22,9 +22,9 @@ public class KyselyHommaApplication {
 	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo) {
 		return (args)  -> {	
 			
+			//eka kysely
 			Kysely kouluRuoka = new Kysely("Kouluruokala");
 			kyselyRepo.save(kouluRuoka);
-			
 			 
 			Kysymys q = new Kysymys("Status?", kouluRuoka);
 			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka);
@@ -39,7 +39,7 @@ public class KyselyHommaApplication {
 			kysymysRepo.save(r);
 			kysymysRepo.save(t);
 			kysymysRepo.save(y);
-			
+
 			vastausRepo.save(new Vastaus("Opiskelija", q));
 			vastausRepo.save(new Vastaus("En ikinä", w));
 			vastausRepo.save(new Vastaus("Olen nirso", e));
@@ -48,7 +48,25 @@ public class KyselyHommaApplication {
 			vastausRepo.save(new Vastaus("Ei tule mitään mieleen.", y));
 			
 			
-		
+			//toka kysely
+			Kysely miniKysely = new Kysely("Kulttuurivinkkaus -kysely");
+			kyselyRepo.save(miniKysely);
+			
+			Kysymys a = new Kysymys("Mitä elokuvaa suosittelet?", miniKysely);
+			Kysymys b = new Kysymys("Mitä tv-sarjaa suosittelet?", miniKysely);
+			Kysymys c = new Kysymys("Mitä musiikkia suosittelet?", miniKysely);
+			
+			kysymysRepo.save(a);
+			kysymysRepo.save(b);
+			kysymysRepo.save(c);
+			
+			vastausRepo.save(new Vastaus("Onnelin ja Annelin talvi", a));
+			vastausRepo.save(new Vastaus("Kafka (Steven Soderbergh)", a));
+			vastausRepo.save(new Vastaus("Pikkukakkonen", b));
+			vastausRepo.save(new Vastaus("Metsien kätkemä", b));
+			vastausRepo.save(new Vastaus("Marcus ja Martinus", c));
+			vastausRepo.save(new Vastaus("Piazzolla Tangos", c));
+			
 		};
 	}
 }
