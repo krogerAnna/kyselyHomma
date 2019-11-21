@@ -1,5 +1,7 @@
 package hh.swd.kyselyHomma.web;
 
+import hh.swd.kyselyHomma.domain.KyselyRepository;
+import hh.swd.kyselyHomma.domain.Kysely;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,9 +48,11 @@ public class KyselyController {
 							//	return kysymysRepo.findAll();
 							//}
 							
-		@GetMapping("/kyselyt/{id}/kysymykset")
-		public @ResponseBody Optional<Kysely> findByKysely(@PathVariable("id") Long kyselyId) {
-			return kyselyRepo.findById(kyselyId);
+		@GetMapping("/kysely/{id}/kysymykset")
+		public @ResponseBody List<Kysymys> findKysymyksetByKysely(@PathVariable("id") Long kyselyId) {
+			Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
+			return kysymysRepo.findAllByKysely(kyselyId);
+		
 		}//ei toimi vielä
 	
 	
