@@ -60,6 +60,9 @@ public class KysymysController {
 		return "redirect:../lisaakysymys";
 	}
 	
+	//kysymys droppivalikko
+	
+	
 	
 	
 	// **** Kysymys RESTit **** //

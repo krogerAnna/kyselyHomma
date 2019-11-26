@@ -1,7 +1,5 @@
 package hh.swd.kyselyHomma.web;
 
-import hh.swd.kyselyHomma.domain.KyselyRepository;
-import hh.swd.kyselyHomma.domain.Kysely;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,21 +37,17 @@ public class KyselyController {
 			return kyselyRepo.findById(kyselyId);
 		}
 		
+		//tietyn kyselyn kaikki vastaukset voi hakea
+		//todo
+		
 		
 		// kaikki x-kyselyn kysymykset
-		
-			// Etsii ja palauttaa kaikki kysymykset
-							//@GetMapping("/kysymykset")
-							//@ResponseBody List<Kysymys> kysymykset() {
-							//	return kysymysRepo.findAll();
-							//}
-							
-		@GetMapping("/kysely/{id}/kysymykset")
-		public @ResponseBody List<Kysymys> findKysymyksetByKysely(@PathVariable("id") Long kyselyId) {
+
+		@GetMapping("/kyselyt/{id}/kysymykset")
+		public @ResponseBody List<Kysymys> findByKysely(@PathVariable("id") Long kyselyId) {
 			Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
-			return kysymysRepo.findAllByKysely(kyselyId);
-		
-		}//ei toimi vielä
+			return kysymysRepo.findAllByKysely(kysely);
+		}
 	
 	
 }
