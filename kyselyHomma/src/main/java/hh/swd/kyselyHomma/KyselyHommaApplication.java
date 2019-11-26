@@ -1,5 +1,8 @@
 package hh.swd.kyselyHomma;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +14,8 @@ import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Type;
 import hh.swd.kyselyHomma.domain.TypeRepository;
+import hh.swd.kyselyHomma.domain.Vaihtoehto;
+import hh.swd.kyselyHomma.domain.VaihtoehtoRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
@@ -21,7 +26,7 @@ public class KyselyHommaApplication {
 		SpringApplication.run(KyselyHommaApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo, TypeRepository typeRepo) {
+	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo, TypeRepository typeRepo, VaihtoehtoRepository vaihtoRepo) {
 		return (args)  -> {	
 			
 			Type tyyppi1 = new Type("open");
@@ -34,7 +39,8 @@ public class KyselyHommaApplication {
 			//eka kysely
 			Kysely kouluRuoka = new Kysely("Kouluruokala");
 			kyselyRepo.save(kouluRuoka);
-			 
+
+			
 			Kysymys q = new Kysymys("Status?", kouluRuoka, tyyppi2);
 			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka, tyyppi1);
 			Kysymys e = new Kysymys("Jos et asioi ollenkaan tai todella harvoin niin miksi?", kouluRuoka, tyyppi1);
@@ -48,11 +54,32 @@ public class KyselyHommaApplication {
 			kysymysRepo.save(r);
 			kysymysRepo.save(t);
 			kysymysRepo.save(y);
+			
+			//kysymyksen q vaihtoehdot
+			Vaihtoehto opiskelija = new Vaihtoehto("Opiskelija", q);
+			Vaihtoehto opettaja = new Vaihtoehto("Opettaja", q);
+			Vaihtoehto muu = new Vaihtoehto("Muu", q);
+			vaihtoRepo.save(opiskelija);
+			vaihtoRepo.save(opettaja);
+			vaihtoRepo.save(muu);
+
+			
+			//kysymyksen r vaihtoehdot
+			Vaihtoehto ruoka = new Vaihtoehto("Ruoan laadun parannus", r);
+			Vaihtoehto palvelu = new Vaihtoehto("Palvelun laatu", r);
+			Vaihtoehto hinta = new Vaihtoehto("Hintojen muutos", r);
+			Vaihtoehto siisteys = new Vaihtoehto("Yleisen siisteyden parantaminen", r);
+			Vaihtoehto muuu = new Vaihtoehto("Muu", r);
+			vaihtoRepo.save(ruoka);
+			vaihtoRepo.save(palvelu);
+			vaihtoRepo.save(hinta);
+			vaihtoRepo.save(siisteys);
+			vaihtoRepo.save(muuu);
 
 			vastausRepo.save(new Vastaus("Opiskelija", q));
 			vastausRepo.save(new Vastaus("En ikinä", w));
 			vastausRepo.save(new Vastaus("Olen nirso", e));
-			vastausRepo.save(new Vastaus("Parempi ruoka", r));
+			vastausRepo.save(new Vastaus("Ruoan laadun parannus", r));
 			vastausRepo.save(new Vastaus("-", t));
 			vastausRepo.save(new Vastaus("Ei tule mitään mieleen.", y));
 			

@@ -23,9 +23,10 @@ public class Vaihtoehto {
 	}
 
 
-	public Vaihtoehto(String content) {
+	public Vaihtoehto(String content, Kysymys kysymys) {
 		super();
 		this.content = content;
+		this.kysymys = kysymys;
 	}
 
 
