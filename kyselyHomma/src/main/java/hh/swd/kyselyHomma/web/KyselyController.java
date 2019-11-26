@@ -49,5 +49,4 @@ public class KyselyController {
 			return kysymysRepo.findAllByKysely(kysely);
 		}
 	
-	
 }
