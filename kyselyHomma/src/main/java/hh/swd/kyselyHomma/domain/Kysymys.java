@@ -33,6 +33,9 @@ public class Kysymys {
 	@JoinColumn(name="typeId")
 	private Type type;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
+	private List<Vaihtoehto> vaihtoehdot;
+	
 	//konstuktorit
 	public Kysymys() {}
 	
