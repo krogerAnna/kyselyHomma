@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Vaihtoehto {
@@ -12,15 +14,19 @@ public class Vaihtoehto {
 	private Long vaihtoehtoId;
 	private String content;
 	
+	@ManyToOne
+	@JoinColumn(name="kysymysId")
+	private Kysymys kysymys;
 	
 	public Vaihtoehto() {
 		super();
 	}
 
 
-	public Vaihtoehto(String content) {
+	public Vaihtoehto(String content, Kysymys kysymys) {
 		super();
 		this.content = content;
+		this.kysymys = kysymys;
 	}
 
 
