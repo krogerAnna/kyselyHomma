@@ -29,6 +29,7 @@ public class KyselyHommaApplication {
 	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo, TypeRepository typeRepo, VaihtoehtoRepository vaihtoRepo) {
 		return (args)  -> {	
 			
+			//kaikki vaihtoehdot kysymyksen tyypille
 			Type tyyppi1 = new Type("open");
 			Type tyyppi2 = new Type("dropdown");
 			Type tyyppi3 = new Type("multiplechoice");
@@ -39,7 +40,6 @@ public class KyselyHommaApplication {
 			//eka kysely
 			Kysely kouluRuoka = new Kysely("Kouluruokala");
 			kyselyRepo.save(kouluRuoka);
-
 			
 			Kysymys q = new Kysymys("Status?", kouluRuoka, tyyppi2);
 			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", kouluRuoka, tyyppi1);
@@ -63,7 +63,6 @@ public class KyselyHommaApplication {
 			vaihtoRepo.save(opettaja);
 			vaihtoRepo.save(muu);
 
-			
 			//kysymyksen r vaihtoehdot
 			Vaihtoehto ruoka = new Vaihtoehto("Ruoan laadun parannus", r);
 			Vaihtoehto palvelu = new Vaihtoehto("Palvelun laatu", r);
@@ -83,8 +82,7 @@ public class KyselyHommaApplication {
 			vastausRepo.save(new Vastaus("-", t));
 			vastausRepo.save(new Vastaus("Ei tule mitään mieleen.", y));
 			
-			
-			//toka kysely
+			//toka kysely + sen kysymykset 
 			Kysely miniKysely = new Kysely("Kulttuurivinkkaus -kysely");
 			kyselyRepo.save(miniKysely);
 			
