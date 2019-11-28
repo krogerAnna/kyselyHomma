@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.Vaihtoehto;
+import hh.swd.kyselyHomma.domain.VaihtoehtoRepository;
  
 @Controller
 public class KysymysController {
@@ -24,7 +26,8 @@ public class KysymysController {
 	private KysymysRepository kysymysRepo;
 	@Autowired
 	private KyselyRepository kyselyRepo;
-
+	@Autowired
+	private VaihtoehtoRepository vaihtoehtoRepo;
 	
 	//Palauttaa etusivun
 	@GetMapping("/")
@@ -60,6 +63,9 @@ public class KysymysController {
 		return "redirect:../lisaakysymys";
 	}
 	
+	//kysymys droppivalikko
+	
+	
 	
 	
 	// **** Kysymys RESTit **** //
@@ -74,6 +80,19 @@ public class KysymysController {
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymys(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
+	}
+	
+	//Hae kaikki vaihtoehdot
+	@GetMapping("/vaihtoehdot")
+	@ResponseBody List<Vaihtoehto> vaihtoehdot() {
+		return vaihtoehtoRepo.findAll();
+	}
+	
+	//Hae vaihtoehdot kysymyksittäin
+ 	@GetMapping("/kysymykset/{id}/vaihtehdot")
+	public @ResponseBody List<Vaihtoehto> findAllByKysymys(@PathVariable("id") Long kysymysId) {
+		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
+		return vaihtoehtoRepo.findAllByKysymys(kysymys);
 	}
 	
 }

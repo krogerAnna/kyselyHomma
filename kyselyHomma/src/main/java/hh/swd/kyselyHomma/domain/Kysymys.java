@@ -29,15 +29,29 @@ public class Kysymys {
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
+	@ManyToOne
+	@JoinColumn(name="typeId")
+	private Type type;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
+	private List<Vaihtoehto> vaihtoehdot;
 	
 	//konstuktorit
 	public Kysymys() {}
 	
-	public Kysymys(String content, Kysely kysely) {
+	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
 		this.content = content;
 		this.kysely = kysely;
-
+		this.type = type;
+	}
+	
+	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {
+		super();
+		this.content = content;
+		this.kysely = kysely;
+		this.type = type;
+		this.vaihtoehdot = vaihtoehdot;
 	}
 	
 	//setterit
@@ -57,6 +71,10 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 	
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;
@@ -72,6 +90,10 @@ public class Kysymys {
 	
 	public Kysely getKysely() {
 		return kysely;
+	}
+
+	public Type getType() {
+		return type;
 	}
 
 	//toString

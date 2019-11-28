@@ -15,7 +15,6 @@ import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
-import hh.swd.kyselyHomma.domain.VastausRepository;
 
 @Controller
 public class KyselyController {
@@ -26,8 +25,6 @@ public class KyselyController {
 	private KyselyRepository kyselyRepo;
 	@Autowired
 	private KysymysRepository kysymysRepo;
-//	@Autowired
-//	private VastausRepository vastausRepo;
 
 	// Etsii ja palauttaa kaikki kyselyt
 	@GetMapping("/kyselyt")
@@ -66,7 +63,7 @@ public class KyselyController {
 		List<Kysymys> kysymykset = kysymysRepo.findAllByKysely(kysely);
 		List<Vastaus> vastaukset = new ArrayList<Vastaus>();
 		List<Vastaus> kysymyksenVastaukset = new ArrayList<Vastaus>();
-		
+
 		// käydään taulukko läpi 
 		// jokaisen kysymys-olion kohdalla haetaan sen sisältämät vastaukset ja talletetaan ne muuttujaan
 		// sitten iteroidaan muuttujan "kysymyksenVastaukset", joka on taulukko, läpi ja lisätään jokainen sen sisältämä
