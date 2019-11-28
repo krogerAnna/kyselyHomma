@@ -82,7 +82,7 @@ public class KyselyHommaApplication {
 			vastausRepo.save(new Vastaus("-", t));
 			vastausRepo.save(new Vastaus("Ei tule mitään mieleen.", y));
 			
-			//toka kysely + sen kysymykset
+			//toka kysely + sen kysymykset 
 			Kysely miniKysely = new Kysely("Kulttuurivinkkaus -kysely");
 			kyselyRepo.save(miniKysely);
 			
