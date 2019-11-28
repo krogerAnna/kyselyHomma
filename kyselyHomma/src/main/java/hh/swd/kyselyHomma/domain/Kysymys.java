@@ -23,7 +23,7 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
@@ -35,7 +35,7 @@ public class Kysymys {
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
