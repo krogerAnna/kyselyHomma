@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<h1>Luo uusi kysymys</h1>
+		<form th:object="${kysymys}" th:action="@{savekysymys}" action="#" method="post">
+			<p>Kysymys: <input type="text" id="content" th:field="*{content}" /> </p>
+			<label for="list">Kysely: </label>
+			<select id="list" th:field="*{kysely}" class="form-control">
+	    		<option th:each="kysely: ${kyselyt}" th:value="${kysely.kyselyId}" th:text="${kysely.name}"></option>
+	  		</select>
+			<input type="submit" value="Tallenna"></input>
+		</form>
+	<p>Huom! Kysymystä luodessa ei vielä voi lisätä sitä mihinkään kyselyyn!</p>
+	<br />
+	<a href="/resthome">REST Homepage</a>
+	</div>
+</body>
+</html>
