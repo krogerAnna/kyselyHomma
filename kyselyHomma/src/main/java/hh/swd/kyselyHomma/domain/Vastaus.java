@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -18,6 +19,7 @@ public class Vastaus {
 	private Long vastausId;
 	private String content;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;
