@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd.kyselyHomma.domain.KyselyRepository;
@@ -50,10 +51,10 @@ public class KysymysController {
 	}
 	
 	//Tallentaa uuden kysymyksen
-	@PostMapping("/savekysymys")
-	public String saveKysymys(Kysymys kysymys) {
-		kysymysRepo.save(kysymys);
-		return "redirect:lisaakysymys";
+	@PostMapping("/kysymykset")
+	public @ResponseBody Kysymys lisaaKysymysRest(@RequestBody Kysymys kysymys) {
+		return kysymysRepo.save(kysymys);
+		
 	}
 	
 	//Poista kysymys
@@ -94,5 +95,11 @@ public class KysymysController {
 		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
 		return vaihtoehtoRepo.findAllByKysymys(kysymys);
 	}
+ 	
+// 	@GetMapping("/vaihtoehto/id/kysymys")
+// 	public @ResponseBody List<Vaihtoehto> findAllByVaihtoehto(@PathVariable("id") long vaihtoehtoId) {
+// 		Optional<Vaihtoehto> kysymys = findAllByVaihtoehto(vaihtoehtoId);
+// 		return 
+// 	}
 	
 }

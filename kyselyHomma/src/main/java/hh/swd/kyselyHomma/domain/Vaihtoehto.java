@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Vaihtoehto {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long vaihtoehtoId;

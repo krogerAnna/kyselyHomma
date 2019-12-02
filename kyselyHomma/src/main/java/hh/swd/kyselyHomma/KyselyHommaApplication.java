@@ -48,12 +48,14 @@ public class KyselyHommaApplication {
 			Kysymys t = new Kysymys("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:", kouluRuoka, tyyppi1);
 			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", kouluRuoka, tyyppi1);
 			
+			
 			kysymysRepo.save(q);
 			kysymysRepo.save(w);
 			kysymysRepo.save(e);
 			kysymysRepo.save(r);
 			kysymysRepo.save(t);
 			kysymysRepo.save(y);
+			
 			
 			//kysymyksen q vaihtoehdot
 			Vaihtoehto opiskelija = new Vaihtoehto("Opiskelija", q);
@@ -63,6 +65,11 @@ public class KyselyHommaApplication {
 			vaihtoRepo.save(opettaja);
 			vaihtoRepo.save(muu);
 
+			q.addVaihtoehto(opiskelija);
+			q.addVaihtoehto(opettaja);
+			q.addVaihtoehto(muu);
+			
+			
 			
 			//kysymyksen r vaihtoehdot
 			Vaihtoehto ruoka = new Vaihtoehto("Ruoan laadun parannus", r);
