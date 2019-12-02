@@ -6,227 +6,111 @@
 </head>
 <body>
 	<h1>REST Home Page</h1>
-	<h2>Kaikki kysymykset</h2>
-	<p>
-		<strong>Method:</strong> GET 
-		<strong>Endpoint:</strong> 
-		<strong><a href="/kysymykset">/kysymykset</a></strong>
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	[
-		{
-		kysymysId: 2,
-		content: "Status?",
-		kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		},
-		{
-		kysymysId: 3,
-		content: "Kuinka usein asioit kouluruokalassa?",
-		kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		},
-		{
-		kysymysId: 4,
-		content: "Jos et asioi ollenkaan tai todella harvoin niin miksi?",
-		kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		},
-		{
-		kysymysId: 5,
-		content: "Mikä lisäisi/parantaisi ruokalassa asioimistasi?",
-		kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		}
-	]
-		</code>
-	</pre>
 	
-		<h2>Luo uusi vastaus</h2>
+	<!-- KYSYMYS -->
+	<h2>KYSYMYS ENDPOINTIT</h2>
+	<strong> KAIKKI KYSYMYKSET </strong>
 	<p>
-		<strong> POST </strong> 
-		<strong> /vastaukset</strong> 
-		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	{
-	content: "Opiskelija",
-	kysymys: {
-		kysymysId: 2,
-		}
-	}
-		</code>
-	</pre>
-	
-	<h2>Kysymys By ID</h2>
-	<p>
-		<strong> GET </strong>
-		<strong> /kysymykset/{id} </strong> 
-		<strong><a href="/kysymykset/2">/kysymykset/2</a></strong>
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	{
-	kysymysId: 2,
-	content: "Status?",
-		kysely: {
-		kyselyId: 1,
-		name: "Kouluruokala"
-		}
-	}
-		</code>
-	</pre>
-	
-	<h2>Kaikki vastaukset</h2>
-	<p>
-		<strong>Method:</strong> GET 
+		<strong>Method:</strong> GET <br>
 		<strong>Endpoint:</strong> 
-		<strong><a href="/vastaukset">/vastaukset</a></strong>
-	</p>
+		<strong><a href="/kysymykset">/kysymykset</a></strong> 
+	</p><br>
+	<strong> KYSYMYS BY ID </strong>
 	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	[
-		{
-		vastausId: 8,
-		content: "Opiskelija",
-		kysymys: {
-			kysymysId: 2,
-			content: "Status?",
-				kysely: {
-				kyselyId: 1,
-				name: "Kouluruokala"
-				}
-			}
-		},
-		{
-		vastausId: 9,
-		content: "En ikinä",
-		kysymys: {
-			kysymysId: 3,
-			content: "Kuinka usein asioit kouluruokalassa?",
-				kysely: {
-				kyselyId: 1,
-				name: "Kouluruokala"
-				}
-			}
-		}
-	]
-		</code>
-	</pre>
-	<h2>Vastaus By ID</h2>
-	<p>
-		<strong> GET </strong>
-		<strong> /vastaukset/{id} </strong> 
-		<strong><a href="/vastaukset/8">/vastaukset/8</a></strong>
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	{
-	vastausId: 8,
-	content: "Opiskelija",
-	kysymys: {
-		kysymysId: 2,
-		content: "Status?",
-			kysely: {
-			kyselyId: 1,
-			name: "Kouluruokala"
-			}
-		}
-	}
-		</code>
-	</pre>
-		<h2>Kaikki kyselyt</h2>
-	<p>
-		<strong>Method:</strong> GET 
+		<strong>Method:</strong> GET <br>
 		<strong>Endpoint:</strong> 
-		<strong><a href="/kyselyt">/kyselyt</a></strong>
-	</p>
+		<strong><a href="/kysymykset/2">/kysymykset/{id}</a></strong>
+	</p><br>
+	<strong> LUO UUSI KYSYMYS </strong>
 	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-[
-	{
-		kyselyId: 1,
-		name: "Kouluruokala"
-	},
-	{
-		kyselyId: 14,
-		name: "Kulttuurivinkkaus -kysely"
-	}
-]
-		</code>
-	</pre>
-	<h2>Kysely By ID</h2>
-	<p>
-		<strong> GET </strong>
-		<strong> /kyselyt/{id} </strong> 
-		<strong><a href="/kyselyt/1">/kyselyt/1</a></strong>
-	</p>
-	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
-	<pre>
-		<code>
-	{
-		kyselyId: 1,
-		name: "Kouluruokala"
-	}
-		</code>
-	</pre>
-
-	<h2>Luo uusi Kysymys</h2>
-	<a href="/lisaakysymys">Luo uusi kysymys</a>
-	<p>
-		<strong> POST </strong> 
+		<a href="/lisaakysymys">Luo uusi kysymys</a> <br>
+		<strong>Method:</strong> POST <br>
+		<strong>Endpoint:</strong> 
 		<strong> /kysymykset (ei toimi atm)</strong> 
 		(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
+	</p><br>
+	<strong> POISTA KYSYMYS </strong>
 	<p>
-		<strong>JSON Esimerkki:</strong>
-	</p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong>/poistakysymys/{id}</strong> <br>
+		Tässä ei siis linkkiä :)
+	</p><br>
+	<strong> TIETYN KYSYMYKSEN VAIHTOEHDOT </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kysymykset/5/vaihtoehdot">/kysymykset/{id}/vaihtoehdot</a></strong>
+	</p><br>
+	<strong> KAIKKIEN KYSYMYKSIEN KAIKKI MAHD. VAIHTOEHDOT </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/vaihtoehdot">/vaihtoehdot</a></strong>
+	</p><br>
+	
+	
+	<!-- VASTAUS -->
+	<h2>VASTAUS ENDPOINTIT</h2>
+	<strong>LUO UUSI VASTAUS</strong> <br>
+	<strong>Method:</strong> POST <br>
+	<strong>Endpoint:</strong> 
+	<strong> /vastaukset</strong>
+	(Test with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.) <br>
+	<strong>JSON Esimerkki:</strong>
 	<pre>
 		<code>
-		{
-			"id":7,
-			"content":"Are you wanna die?",
-			kysely: {
-				kyselyId: 1,
-				name: "Kouluruokala"
-				}
+	{
+	content: "Opiskelija",
+	kysymys: {
+		kysymysId: 2,
 		}
+	}
 		</code>
 	</pre>
+	<strong>KAIKKI VASTAUKSET</strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/vastaukset">/vastaukset</a></strong>
+	</p><br>
 	
+	<strong>VASTAUS BY ID</strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/vastaukset/8">/vastaukset/{id}</a></strong>
+	</p><br>
 	
-	
-	
+		<!-- KYSELY -->
+	<h2>KYSELY ENDPOINTIT</h2>
+	<strong> KAIKKI KYSELYT </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kyselyt">/kyselyt</a></strong>
+	</p><br>
+	<strong> KYSELY BY ID </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kyselyt/1">/kyselyt/{id}</a></strong>
+	</p><br>
+	<strong> TIETYN KYSELYN KAIKKI KYSYMYKSET </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="/kyselyt/4/kysymykset">/kyselyt/{id}/kysymykset</a></strong>
+	</p><br>
+	<strong> TIETYN KYSELYN KAIKKI VASTAUKSET </strong>
+	<p>
+		<strong>Method:</strong> GET <br>
+		<strong>Endpoint:</strong> 
+		<strong><a href="kyselyt/4/vastaukset">kyselyt/{id}/vastaukset</a></strong>
+	</p><br>
+
+
+
 
 </body>
 </html>

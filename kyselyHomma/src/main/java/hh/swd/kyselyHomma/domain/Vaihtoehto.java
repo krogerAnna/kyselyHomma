@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Vaihtoehto {
 	
@@ -15,6 +19,7 @@ public class Vaihtoehto {
 	private Long vaihtoehtoId;
 	private String content;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;
@@ -41,6 +46,11 @@ public class Vaihtoehto {
 		this.content = content;
 	}
 
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
+	}
+
+
 	//Getters
 	public Long getVaihtoehtoId() {
 		return vaihtoehtoId;
@@ -50,8 +60,10 @@ public class Vaihtoehto {
 	public String getContent() {
 		return content;
 	}
-	
-	
-	
+
+
+	public Kysymys getKysymys() {
+		return kysymys;
+	}
 	
 }

@@ -12,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysymys {
@@ -22,7 +24,7 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonIgnore
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
@@ -34,6 +36,7 @@ public class Kysymys {
 	@JoinColumn(name="typeId")
 	private Type type;
 	
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
@@ -86,7 +89,7 @@ public class Kysymys {
 	public void setType(Type type) {
 		this.type = type;
 	}
-
+	
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;

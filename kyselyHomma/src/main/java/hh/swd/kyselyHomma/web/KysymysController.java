@@ -90,7 +90,7 @@ public class KysymysController {
 	}
 	
 	//Hae vaihtoehdot kysymyksittäin
- 	@GetMapping("/kysymykset/{id}/vaihtehdot")
+ 	@GetMapping("/kysymykset/{id}/vaihtoehdot")
 	public @ResponseBody List<Vaihtoehto> findAllByKysymys(@PathVariable("id") Long kysymysId) {
 		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
 		return vaihtoehtoRepo.findAllByKysymys(kysymys);
