@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd.kyselyHomma.domain.Kysely;
@@ -46,6 +48,14 @@ public class KyselyController {
 	// @ResponseBody List<Kysymys> kysymykset() {
 	// return kysymysRepo.findAll();
 	// }
+	
+//	@PostMapping("/kyselyt/{id}/kysymykset")
+//	public @ResponseBody List<Kysymys> addKysymykset(@PathVariable("id") Long kyselyId, @RequestBody List<Kysymys> lisattavatKysymykset) {
+//		Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
+//		kysely.get().setKysymykset(lisattavatKysymykset);
+//		return kyselyRepo.save(kysely);
+//		
+//	}
 
 	@GetMapping("/kyselyt/{id}/kysymykset")
 	public @ResponseBody List<Kysymys> findByKysely(@PathVariable("id") Long kyselyId) {

@@ -1,5 +1,6 @@
 package hh.swd.kyselyHomma.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysymys {
@@ -23,19 +25,21 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
@@ -47,6 +51,7 @@ public class Kysymys {
 		this.content = content;
 		this.kysely = kysely;
 		this.type = type;
+		this.vaihtoehdot = new ArrayList<>();
 	}
 	
 	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {
@@ -54,10 +59,17 @@ public class Kysymys {
 		this.content = content;
 		this.kysely = kysely;
 		this.type = type;
-		this.vaihtoehdot = vaihtoehdot;
+		// toimiiko?
+		this.vaihtoehdot = new ArrayList<Vaihtoehto>(vaihtoehdot);
 	}
 	
+	
 	//setterit
+	
+	public void setVaihtoehto(Vaihtoehto vaihtoehto) {
+		vaihtoehdot.add(vaihtoehto);
+	}
+
 	public void setKysymysId(Long id) {
 		this.kysymysId = id;
 	}

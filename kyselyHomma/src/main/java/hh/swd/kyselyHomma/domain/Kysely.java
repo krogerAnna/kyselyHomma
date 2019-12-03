@@ -1,5 +1,6 @@
 package hh.swd.kyselyHomma.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class Kysely {
 	private Long kyselyId;
 	private String name;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
 	private List<Kysymys> kysymykset;
 	
@@ -29,8 +30,14 @@ public class Kysely {
 	//konstruktorit
 	public Kysely() {}
 
+//	public Kysely(String name) {
+//		super();
+//		this.name = name;
+//	}
+	
+	
+	// ????
 	public Kysely(String name) {
-		super();
 		this.name = name;
 	}
 

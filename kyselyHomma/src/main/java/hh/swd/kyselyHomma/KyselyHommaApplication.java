@@ -29,6 +29,49 @@ public class KyselyHommaApplication {
 	public CommandLineRunner demo(KysymysRepository kysymysRepo, VastausRepository vastausRepo, KyselyRepository kyselyRepo, TypeRepository typeRepo, VaihtoehtoRepository vaihtoRepo) {
 		return (args)  -> {	
 			
+			/*
+			 * Kokeilua
+			 */
+			
+//			Kysely kysely = new Kysely("Testikysely");
+//			
+//			
+//			Type tyyppi1 = new Type("open");
+//			Type tyyppi2 = new Type("dropdown");
+//			Type tyyppi3 = new Type("multiplechoice");
+//			typeRepo.save(tyyppi1);
+//			typeRepo.save(tyyppi2);
+//			typeRepo.save(tyyppi3);
+//			kyselyRepo.save(kysely);
+//			
+//			Kysymys q = new Kysymys("Status?", tyyppi2);
+//			Kysymys w = new Kysymys("Kuinka usein asioit kouluruokalassa?", tyyppi1);
+//			Kysymys e = new Kysymys("Jos et asioi ollenkaan tai todella harvoin niin miksi?", tyyppi1);
+//			Kysymys r = new Kysymys("Mikä lisäisi/parantaisi ruokalassa asioimistasi?", tyyppi3);
+//			Kysymys t = new Kysymys("Jos vastasit äskeiseen kysymykseen 'Muu' kirjoita alle mitä se olisi:", tyyppi1);
+//			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", tyyppi1);
+//			
+//			
+//			kysymysRepo.save(q);
+//			kysymysRepo.save(w);
+//			kysymysRepo.save(e);
+//			kysymysRepo.save(r);
+//			kysymysRepo.save(t);
+//			kysymysRepo.save(y);
+//			
+//			List<Kysymys> kyselynKysymykset = new ArrayList<>();
+//			kyselynKysymykset.add(q);
+//			kyselynKysymykset.add(w);
+//			kyselynKysymykset.add(e);
+//			kyselynKysymykset.add(r);
+//			kyselynKysymykset.add(t);
+//			kyselynKysymykset.add(y);
+//			
+//			
+//			kysely.setKysymykset(kyselynKysymykset);
+//			
+//			kyselyRepo.save(kysely);
+			
 			//kaikki vaihtoehdot kysymyksen tyypille
 			Type tyyppi1 = new Type("open");
 			Type tyyppi2 = new Type("dropdown");
@@ -56,6 +99,7 @@ public class KyselyHommaApplication {
 			kysymysRepo.save(y);
 			
 			//kysymyksen q vaihtoehdot
+			// vaihtoehtojen syöttäminen Kysymys-olion muuttujiin mieluummin?
 			Vaihtoehto opiskelija = new Vaihtoehto("Opiskelija", q);
 			Vaihtoehto opettaja = new Vaihtoehto("Opettaja", q);
 			Vaihtoehto muu = new Vaihtoehto("Muu", q);
@@ -90,6 +134,11 @@ public class KyselyHommaApplication {
 			Kysymys b = new Kysymys("Mitä tv-sarjaa suosittelet?", miniKysely, tyyppi1);
 			Kysymys c = new Kysymys("Mitä musiikkia suosittelet?", miniKysely, tyyppi1);
 			
+//
+//			Kysymys a = new Kysymys("Mitä elokuvaa suosittelet?", miniKysely, tyyppi1);
+//			Kysymys b = new Kysymys("Mitä tv-sarjaa suosittelet?", miniKysely, tyyppi1);
+//			Kysymys c = new Kysymys("Mitä musiikkia suosittelet?", miniKysely, tyyppi1);
+//			
 			kysymysRepo.save(a);
 			kysymysRepo.save(b);
 			kysymysRepo.save(c);
