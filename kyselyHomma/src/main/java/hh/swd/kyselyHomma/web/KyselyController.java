@@ -3,6 +3,7 @@ package hh.swd.kyselyHomma.web;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +70,10 @@ public class KyselyController {
 		// sitten iteroidaan muuttujan "kysymyksenVastaukset", joka on taulukko, läpi ja lisätään jokainen sen sisältämä
 		// vastaus muuttujaan "vastaukset"
 		// lopulta tämä palautetaan
+		
+//		ArrayList<Vastaus> vastaukset = kysymykset.stream()
+//		.map(kysymys -> kysymys.getVastaukset())
+//		.collect(Collectors.toCollection(ArrayList::new));
 		
 		for (Kysymys kysymys : kysymykset) {
 			kysymyksenVastaukset = kysymys.getVastaukset();

@@ -13,12 +13,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Vaihtoehto {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long vaihtoehtoId;
 	private String content;
 	
-	@JsonBackReference
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;

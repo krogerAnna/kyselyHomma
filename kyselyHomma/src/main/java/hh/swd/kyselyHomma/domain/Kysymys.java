@@ -1,5 +1,6 @@
 package hh.swd.kyselyHomma.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
@@ -35,25 +36,36 @@ public class Kysymys {
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
 	//konstuktorit
 	public Kysymys() {}
 	
+//	public Kysymys(String content, Kysely kysely, Type type) {
+//		super();
+//		this.content = content;
+//		this.kysely = kysely;
+//		this.type = type;
+//	}
+	
 	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
 		this.content = content;
 		this.kysely = kysely;
 		this.type = type;
+		this.vaihtoehdot = new ArrayList<Vaihtoehto>();
 	}
 	
-	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {
-		super();
-		this.content = content;
-		this.kysely = kysely;
-		this.type = type;
+	public void addVaihtoehto(Vaihtoehto vaihtoehto) {
+		vaihtoehdot.add(vaihtoehto);
+	}
+	public List<Vaihtoehto> getVaihtoehdot() {
+		return vaihtoehdot;
+	}
+	
+	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
 		this.vaihtoehdot = vaihtoehdot;
 	}
 	
@@ -78,10 +90,6 @@ public class Kysymys {
 		this.type = type;
 	}
 	
-	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
-		this.vaihtoehdot = vaihtoehdot;
-	}
-
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;
@@ -101,10 +109,6 @@ public class Kysymys {
 
 	public Type getType() {
 		return type;
-	}
-
-	public List<Vaihtoehto> getVaihtoehdot() {
-		return vaihtoehdot;
 	}
 
 	//toString
