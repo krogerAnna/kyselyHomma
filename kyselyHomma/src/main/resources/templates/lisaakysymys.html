@@ -12,10 +12,13 @@
 			<label for="list">Kysely: </label>
 			<select id="list" th:field="*{kysely}" class="form-control">
 	    		<option th:each="kysely: ${kyselyt}" th:value="${kysely.kyselyId}" th:text="${kysely.name}"></option>
-	  		</select>
+	  		</select><br>
+	  		<label for="list">Type: </label>
+	  		<select id="list" th:field="*{type}" class="form-control">
+    			<option th:each="type: ${typet}" th:value="${type.typeId}" th:text="${type.type}"></option>
+  			</select><br>
 			<input type="submit" value="Tallenna"></input>
 		</form>
-	<p>Huom! Kysymystä luodessa ei vielä voi lisätä sitä mihinkään kyselyyn!</p>
 	<br />
 	<a href="/resthome">REST Homepage</a>
 	</div>
