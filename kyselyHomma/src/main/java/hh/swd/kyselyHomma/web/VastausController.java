@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.swd.kyselyHomma.domain.Kysymys;
+import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
@@ -22,6 +24,10 @@ public class VastausController {
 	VastausController (VastausRepository repository) {
 		this.repository = repository;
 	}
+	@Autowired 
+	private VastausRepository vastausRepo;
+	@Autowired
+	private KysymysRepository kysymysRepo;
 	
 	//Tallentaa uuden vastauksen
 	@PostMapping("/savevastaus")
@@ -30,9 +36,6 @@ public class VastausController {
 	}
 	
 	// **** Vastaus RESTit **** //
-	
-	@Autowired 
-	private VastausRepository vastausRepo;
 	
 	// Etsii ja palauttaa kaikki vastaukset
 	@GetMapping("/vastaukset")
@@ -51,5 +54,13 @@ public class VastausController {
 	public @ResponseBody Vastaus lisaaUusiVastaus(@RequestBody Vastaus vastaus) {
 		return vastausRepo.save(vastaus);
 	}
+	
+	// tietyn kysymyksen vastaukset
+ 	@GetMapping("/kysymykset/{id}/vastaukset")
+ 	public @ResponseBody List<Vastaus> findByKysymys(@PathVariable("id") Long kysymysId) {
+ 		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
+ 		return vastausRepo.findAllByKysymys(kysymys);
+	
+}
 }
 
