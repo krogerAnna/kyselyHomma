@@ -1,5 +1,6 @@
 package hh.swd.kyselyHomma.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysymys {
@@ -21,7 +24,7 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonIgnore
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
@@ -29,15 +32,41 @@ public class Kysymys {
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
+	@ManyToOne
+	@JoinColumn(name="typeId")
+	private Type type;
+	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
+	private List<Vaihtoehto> vaihtoehdot;
 	
 	//konstuktorit
 	public Kysymys() {}
 	
-	public Kysymys(String content, Kysely kysely) {
+//	public Kysymys(String content, Kysely kysely, Type type) {
+//		super();
+//		this.content = content;
+//		this.kysely = kysely;
+//		this.type = type;
+//	}
+	
+	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
 		this.content = content;
 		this.kysely = kysely;
-
+		this.type = type;
+		this.vaihtoehdot = new ArrayList<Vaihtoehto>();
+	}
+	
+	public void addVaihtoehto(Vaihtoehto vaihtoehto) {
+		vaihtoehdot.add(vaihtoehto);
+	}
+	public List<Vaihtoehto> getVaihtoehdot() {
+		return vaihtoehdot;
+	}
+	
+	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
+		this.vaihtoehdot = vaihtoehdot;
 	}
 	
 	//setterit
@@ -57,6 +86,10 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 	
+	public void setType(Type type) {
+		this.type = type;
+	}
+	
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;
@@ -72,6 +105,10 @@ public class Kysymys {
 	
 	public Kysely getKysely() {
 		return kysely;
+	}
+
+	public Type getType() {
+		return type;
 	}
 
 	//toString

@@ -24,6 +24,8 @@ public class Kysely {
 	private List<Kysymys> kysymykset;
 	
 	
+	
+	
 	//konstruktorit
 	public Kysely() {}
 

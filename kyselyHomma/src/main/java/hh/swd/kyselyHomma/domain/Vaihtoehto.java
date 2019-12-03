@@ -11,13 +11,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
 @Entity
-public class Vastaus {
+public class Vaihtoehto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long vastausId;
+	private Long vaihtoehtoId;
 	private String content;
 	
 	@JsonManagedReference
@@ -25,22 +24,23 @@ public class Vastaus {
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;
 	
-	
-	//konstruktorit
-	public Vastaus() {
+	public Vaihtoehto() {
 		super();
 	}
 
-	public Vastaus(String content, Kysymys kysymys) {
+
+	public Vaihtoehto(String content, Kysymys kysymys) {
 		super();
 		this.content = content;
 		this.kysymys = kysymys;
 	}
 
-	//setterit
-	public void setVastausId(Long id) {
-		this.vastausId = id;
+
+	//Setters
+	public void setVaihtoehtoId(Long vaihtoehtoId) {
+		this.vaihtoehtoId = vaihtoehtoId;
 	}
+
 
 	public void setContent(String content) {
 		this.content = content;
@@ -49,24 +49,21 @@ public class Vastaus {
 	public void setKysymys(Kysymys kysymys) {
 		this.kysymys = kysymys;
 	}
-	
-	//getterit
-	public Long getVastausId() {
-		return vastausId;
+
+
+	//Getters
+	public Long getVaihtoehtoId() {
+		return vaihtoehtoId;
 	}
+
 
 	public String getContent() {
 		return content;
 	}
 
+
 	public Kysymys getKysymys() {
 		return kysymys;
-	}
-
-	//toString
-	@Override
-	public String toString() {
-		return "Vastaus [vastausId=" + vastausId + ", content=" + content + ", kysymys=" + kysymys + "]";
 	}
 	
 }

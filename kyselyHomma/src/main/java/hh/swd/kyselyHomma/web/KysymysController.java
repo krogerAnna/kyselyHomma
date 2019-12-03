@@ -10,11 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.TypeRepository;
+import hh.swd.kyselyHomma.domain.Vaihtoehto;
+import hh.swd.kyselyHomma.domain.VaihtoehtoRepository;
  
 @Controller
 public class KysymysController {
@@ -24,7 +28,11 @@ public class KysymysController {
 	private KysymysRepository kysymysRepo;
 	@Autowired
 	private KyselyRepository kyselyRepo;
-
+	@Autowired
+	private VaihtoehtoRepository vaihtoehtoRepo;
+	@Autowired
+	private TypeRepository typeRepo;
+	
 	
 	//Palauttaa etusivun
 	@GetMapping("/")
@@ -43,14 +51,15 @@ public class KysymysController {
 	public String lisaaKysymys(Model model) {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kyselyt", kyselyRepo.findAll());
+		model.addAttribute("typet", typeRepo.findAll());
 		return "lisaakysymys";
 	}
 	
 	//Tallentaa uuden kysymyksen
-	@PostMapping("/savekysymys")
-	public String saveKysymys(Kysymys kysymys) {
-		kysymysRepo.save(kysymys);
-		return "redirect:lisaakysymys";
+	@PostMapping("/kysymykset")
+	public @ResponseBody Kysymys lisaaKysymysRest(@RequestBody Kysymys kysymys) {
+		return kysymysRepo.save(kysymys);
+		
 	}
 	
 	//Poista kysymys
@@ -59,6 +68,9 @@ public class KysymysController {
 		kysymysRepo.deleteById(kysymysId);
 		return "redirect:../lisaakysymys";
 	}
+	
+	//kysymys droppivalikko
+	
 	
 	
 	
@@ -75,5 +87,24 @@ public class KysymysController {
 	public @ResponseBody Optional<Kysymys> findKysymys(@PathVariable("id") Long kysymysId) {
 		return kysymysRepo.findById(kysymysId);
 	}
+	
+	//Hae kaikki vaihtoehdot
+	@GetMapping("/vaihtoehdot")
+	@ResponseBody List<Vaihtoehto> vaihtoehdot() {
+		return vaihtoehtoRepo.findAll();
+	}
+	
+	//Hae vaihtoehdot kysymyksittäin
+ 	@GetMapping("/kysymykset/{id}/vaihtoehdot")
+	public @ResponseBody List<Vaihtoehto> findAllByKysymys(@PathVariable("id") Long kysymysId) {
+		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
+		return vaihtoehtoRepo.findAllByKysymys(kysymys);
+	}
+ 	
+// 	@GetMapping("/vaihtoehto/id/kysymys")
+// 	public @ResponseBody List<Vaihtoehto> findAllByVaihtoehto(@PathVariable("id") long vaihtoehtoId) {
+// 		Optional<Vaihtoehto> kysymys = findAllByVaihtoehto(vaihtoehtoId);
+// 		return 
+// 	}
 	
 }
