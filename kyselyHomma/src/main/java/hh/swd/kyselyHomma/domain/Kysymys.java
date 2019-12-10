@@ -27,23 +27,24 @@ public class Kysymys {
 	private String content;
 	
 //	@JsonIgnore
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
-	@JsonManagedReference
+	
 	//@JsonIgnore
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
 	// ei tarvita jsonIgnorea
-	@JsonManagedReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
@@ -58,14 +59,14 @@ public class Kysymys {
 		this.vaihtoehdot = new ArrayList<>();
 	}
 	
-	public Kysymys(String content, Type type, Kysely kysely) {
-		super();
-		this.content = content;
-		this.type = type;
-		this.vaihtoehdot = new ArrayList<>();
-		this.kysely = kysely;
-		
-	}
+//	public Kysymys(String content, Type type, Kysely kysely) {
+//		super();
+//		this.content = content;
+//		this.type = type;
+//		this.vaihtoehdot = new ArrayList<>();
+//		this.kysely = kysely;
+//		
+//	}
 	
 	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {
 		super();

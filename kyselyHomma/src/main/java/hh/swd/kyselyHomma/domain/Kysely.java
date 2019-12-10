@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -23,8 +24,9 @@ public class Kysely {
 	private String name;
 	
 	
-	@JsonBackReference
+	
 //	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
 	private List<Kysymys> kysymykset;
 	
@@ -33,7 +35,7 @@ public class Kysely {
 	
 	//konstruktorit
 	public Kysely() {
-		this.kysymykset = new ArrayList<Kysymys>();
+		//this.kysymykset = new ArrayList<Kysymys>();
 	}
 
 //	public Kysely(String name) {

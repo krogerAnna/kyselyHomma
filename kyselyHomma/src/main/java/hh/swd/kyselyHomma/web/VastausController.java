@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
-@CrossOrigin
+//@CrossOrigin
 @Controller
 public class VastausController {
 
