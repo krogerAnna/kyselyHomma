@@ -59,7 +59,6 @@ public class KysymysController {
 	@PostMapping("/kysymykset")
 	public @ResponseBody Kysymys lisaaKysymysRest(@RequestBody Kysymys kysymys) {
 		return kysymysRepo.save(kysymys);
-		
 	}
 	
 	//Poista kysymys
