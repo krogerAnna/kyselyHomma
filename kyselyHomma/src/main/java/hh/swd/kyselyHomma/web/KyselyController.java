@@ -40,6 +40,13 @@ public class KyselyController {
 	public @ResponseBody Optional<Kysely> findKysely(@PathVariable("id") Long kyselyId) {
 		return kyselyRepo.findById(kyselyId);
 	}
+	
+//	@PostMapping("kyselyt/{id}/kysymykset")
+//	public @ResponseBody Kysymys addKysymysToKysely(@PathVariable("id") Long kyselyId, @RequestBody Kysymys kysymys) {
+//		Optional<Kysely> kysely = kyselyRepo.findById(kyselyId);
+//		kysely.get().setKysymys(kysymys);
+//		return kyselyRepo.save(kysely);
+//	}
 
 	// kaikki x-kyselyn kysymykset
 

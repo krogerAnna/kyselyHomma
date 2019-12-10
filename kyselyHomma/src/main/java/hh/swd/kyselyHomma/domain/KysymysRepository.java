@@ -11,4 +11,6 @@ public interface KysymysRepository extends JpaRepository<Kysymys, Long> {
 	List<Kysymys> findByContent(String content);
 
 	List<Kysymys> findAllByKysely(Optional<Kysely> kysely);
+
+	Kysymys findByKysymysId(Long id);
 }

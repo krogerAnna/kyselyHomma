@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 //import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -25,21 +26,24 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-//	@JsonBackReference
+//	@JsonIgnore
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
-	@JsonIgnore
+	@JsonManagedReference
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
-	@JsonIgnore
+	// ei tarvita jsonIgnorea
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-//	@JsonBackReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
@@ -52,6 +56,15 @@ public class Kysymys {
 		this.kysely = kysely;
 		this.type = type;
 		this.vaihtoehdot = new ArrayList<>();
+	}
+	
+	public Kysymys(String content, Type type, Kysely kysely) {
+		super();
+		this.content = content;
+		this.type = type;
+		this.vaihtoehdot = new ArrayList<>();
+		this.kysely = kysely;
+		
 	}
 	
 	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {

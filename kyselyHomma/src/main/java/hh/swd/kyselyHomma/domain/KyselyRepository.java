@@ -10,5 +10,7 @@ public interface KyselyRepository extends JpaRepository<Kysely, Long>{
 	List<Kysely> findByName(String name);
 	//Kysely findByKysymys(Kysymys kysymys);
 
+	Kysymys save(Optional<Kysely> kysely);
+
 //	List<Kysymys> save(Optional<Kysely> kysely);
 }
