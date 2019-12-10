@@ -36,7 +36,7 @@ public class Kysymys {
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	@JsonBackReference
+	//@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
