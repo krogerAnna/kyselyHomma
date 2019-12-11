@@ -51,6 +51,13 @@ public class Kysymys {
 	//konstuktorit
 	public Kysymys() {}
 	
+//	public Kysymys(String content, Kysely kysely, Type type) {
+//		super();
+//		this.content = content;
+//		this.kysely = kysely;
+//		this.type = type;
+//	}
+	
 	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
 		this.content = content;
@@ -104,10 +111,6 @@ public class Kysymys {
 		this.type = type;
 	}
 	
-	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
-		this.vaihtoehdot = vaihtoehdot;
-	}
-
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;
@@ -127,10 +130,6 @@ public class Kysymys {
 
 	public Type getType() {
 		return type;
-	}
-
-	public List<Vaihtoehto> getVaihtoehdot() {
-		return vaihtoehdot;
 	}
 
 	//toString

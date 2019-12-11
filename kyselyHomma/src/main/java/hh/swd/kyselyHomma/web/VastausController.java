@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.swd.kyselyHomma.domain.Kysymys;
+import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
@@ -34,9 +36,6 @@ public class VastausController {
 	
 	// **** Vastaus RESTit **** //
 	
-	@Autowired 
-	private VastausRepository vastausRepo;
-	
 	// Etsii ja palauttaa kaikki vastaukset
 	@GetMapping("/vastaukset")
 	@ResponseBody List<Vastaus> vastaukset() {
@@ -55,5 +54,7 @@ public class VastausController {
 		return vastausRepo.save(vastaus);
 	}
 	
+
+
 }
 

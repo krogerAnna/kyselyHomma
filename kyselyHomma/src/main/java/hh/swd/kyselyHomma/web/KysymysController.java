@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.TypeRepository;
 import hh.swd.kyselyHomma.domain.Vaihtoehto;
 import hh.swd.kyselyHomma.domain.VaihtoehtoRepository;
  
@@ -29,6 +30,9 @@ public class KysymysController {
 	private KyselyRepository kyselyRepo;
 	@Autowired
 	private VaihtoehtoRepository vaihtoehtoRepo;
+	@Autowired
+	private TypeRepository typeRepo;
+	
 	
 	//Palauttaa etusivun
 	@GetMapping("/")
@@ -47,14 +51,14 @@ public class KysymysController {
 	public String lisaaKysymys(Model model) {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kyselyt", kyselyRepo.findAll());
+		model.addAttribute("typet", typeRepo.findAll());
 		return "lisaakysymys";
 	}
 	
 	//Tallentaa uuden kysymyksen
-	@PostMapping("/savekysymys")
-	public String saveKysymys(Kysymys kysymys) {
-		kysymysRepo.save(kysymys);
-		return "redirect:lisaakysymys";
+	@PostMapping("/kysymykset")
+	public @ResponseBody Kysymys lisaaKysymysRest(@RequestBody Kysymys kysymys) {
+		return kysymysRepo.save(kysymys);
 	}
 	
 	//Poista kysymys
@@ -109,3 +113,4 @@ public class KysymysController {
  	}
 	
 }
+ 	
