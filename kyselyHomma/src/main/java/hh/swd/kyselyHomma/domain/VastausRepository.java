@@ -10,4 +10,6 @@ public interface VastausRepository extends JpaRepository<Vastaus, Long> {
 	List<Kysymys> findByContent(String content);
 	//List<Vastaus> findByKysely(Kysymys kysymys);
 	List<Vastaus> findAllByKysymys(Kysymys kysymys);
+	List<Vastaus> save(List<Vastaus> vastaukset);
+	
 }

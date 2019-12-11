@@ -97,5 +97,12 @@ public class KyselyController {
 		
 		return vastaukset;
 	}
+	
+	// Uuden kyselyn luominen
+	
+	@PostMapping("/kyselyt")
+	public @ResponseBody Kysely createNewKysely(@RequestBody Kysely kysely) {
+		return kyselyRepo.save(kysely);
+	}
 
 }
