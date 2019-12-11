@@ -42,13 +42,7 @@ public class Kysymys {
 	
 	//konstuktorit
 	public Kysymys() {}
-	
-//	public Kysymys(String content, Kysely kysely, Type type) {
-//		super();
-//		this.content = content;
-//		this.kysely = kysely;
-//		this.type = type;
-//	}
+
 	
 	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
