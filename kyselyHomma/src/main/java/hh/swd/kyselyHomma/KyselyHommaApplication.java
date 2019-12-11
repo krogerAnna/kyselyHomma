@@ -92,6 +92,7 @@ public class KyselyHommaApplication {
 			Kysymys y = new Kysymys("Halutessasi voit kirjoittaa tähän lisätietoja koskien vastauksiasi tai, jos mielessäsi on jotain, mitä emme tulleet kysyneeksi:", kouluRuoka, tyyppi1);
 			Kysymys u = new Kysymys("Is earth flat?", kouluRuoka, tyyppi3);
 			
+			
 			kysymysRepo.save(q);
 			kysymysRepo.save(w);
 			kysymysRepo.save(e);
@@ -110,6 +111,7 @@ public class KyselyHommaApplication {
 			
 			//kysymysRepo.save(u);
 			
+			
 			//kysymyksen q vaihtoehdot
 			// vaihtoehtojen syöttäminen Kysymys-olion muuttujiin mieluummin?
 			Vaihtoehto opiskelija = new Vaihtoehto("Opiskelija", q);
@@ -118,6 +120,14 @@ public class KyselyHommaApplication {
 			vaihtoRepo.save(opiskelija);
 			vaihtoRepo.save(opettaja);
 			vaihtoRepo.save(muu);
+
+
+//			q.addVaihtoehto(opiskelija);
+//			q.addVaihtoehto(opettaja);
+//			q.addVaihtoehto(muu);
+			
+			
+			
 
 			//kysymyksen r vaihtoehdot
 			Vaihtoehto ruoka = new Vaihtoehto("Ruoan laadun parannus", r);

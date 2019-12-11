@@ -51,6 +51,13 @@ public class Kysymys {
 	//konstuktorit
 	public Kysymys() {}
 	
+//	public Kysymys(String content, Kysely kysely, Type type) {
+//		super();
+//		this.content = content;
+//		this.kysely = kysely;
+//		this.type = type;
+//	}
+	
 	public Kysymys(String content, Kysely kysely, Type type) {
 		super();
 		this.content = content;
@@ -107,7 +114,7 @@ public class Kysymys {
 	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
 		this.vaihtoehdot = vaihtoehdot;
 	}
-
+	
 	//getterit
 	public Long getKysymysId() {
 		return kysymysId;
@@ -128,7 +135,7 @@ public class Kysymys {
 	public Type getType() {
 		return type;
 	}
-
+	
 	public List<Vaihtoehto> getVaihtoehdot() {
 		return vaihtoehdot;
 	}
@@ -139,5 +146,10 @@ public class Kysymys {
 		return "Kysymys [kysymysId=" + kysymysId + ", content=" + content + ", vastaukset=" + vastaukset + ", kysely="
 				+ kysely + "]";
 	}
+
+//	public void addVaihtoehto(Vaihtoehto opiskelija) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 }
