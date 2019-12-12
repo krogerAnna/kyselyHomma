@@ -18,13 +18,8 @@ import hh.swd.kyselyHomma.domain.VastausRepository;
 
 @Controller
 public class VastausController {
-
-	private final VastausRepository repository;
 	
-	VastausController (VastausRepository repository) {
-		this.repository = repository;
-	}
-	@Autowired 
+	@Autowired
 	private VastausRepository vastausRepo;
 	@Autowired
 	private KysymysRepository kysymysRepo;
@@ -32,7 +27,7 @@ public class VastausController {
 	//Tallentaa uuden vastauksen
 	@PostMapping("/savevastaus")
 	public void saveVastaus(Vastaus vastaus) {
-		repository.save(vastaus);
+		vastausRepo.save(vastaus);
 	}
 	
 	// **** Vastaus RESTit **** //
