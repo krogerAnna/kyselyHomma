@@ -19,7 +19,7 @@ public class Vaihtoehto {
 	private Long vaihtoehtoId;
 	private String content;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;

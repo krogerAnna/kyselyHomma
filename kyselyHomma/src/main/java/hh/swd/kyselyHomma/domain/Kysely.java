@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -19,7 +20,8 @@ public class Kysely {
 	private Long kyselyId;
 	private String name;
 	
-	@JsonIgnore
+	@JsonManagedReference
+	//@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysely")
 	private List<Kysymys> kysymykset;
 	
