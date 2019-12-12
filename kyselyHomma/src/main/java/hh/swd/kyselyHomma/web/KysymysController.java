@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd.kyselyHomma.domain.KyselyRepository;
 import hh.swd.kyselyHomma.domain.Kysymys;
 import hh.swd.kyselyHomma.domain.KysymysRepository;
+import hh.swd.kyselyHomma.domain.TypeRepository;
 import hh.swd.kyselyHomma.domain.Vaihtoehto;
 import hh.swd.kyselyHomma.domain.VaihtoehtoRepository;
  
@@ -29,6 +30,9 @@ public class KysymysController {
 	private KyselyRepository kyselyRepo;
 	@Autowired
 	private VaihtoehtoRepository vaihtoehtoRepo;
+	@Autowired
+	private TypeRepository typeRepo;
+	
 	
 	//Palauttaa etusivun
 	@GetMapping("/")
@@ -47,6 +51,7 @@ public class KysymysController {
 	public String lisaaKysymys(Model model) {
 		model.addAttribute("kysymys", new Kysymys());
 		model.addAttribute("kyselyt", kyselyRepo.findAll());
+		model.addAttribute("typet", typeRepo.findAll());
 		return "lisaakysymys";
 	}
 	
@@ -54,7 +59,6 @@ public class KysymysController {
 	@PostMapping("/kysymykset")
 	public @ResponseBody Kysymys lisaaKysymysRest(@RequestBody Kysymys kysymys) {
 		return kysymysRepo.save(kysymys);
-		
 	}
 	
 	//Poista kysymys
@@ -77,6 +81,11 @@ public class KysymysController {
 		return kysymysRepo.findAll();
 	}
 	
+//	@PostMapping("/kysymykset")
+//	public @ResponseBody Kysymys addKysymys(@RequestBody Kysymys kysymys) {
+//		return kysymysRepo.save(kysymys);
+//	}
+	
 	// getById
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymys(@PathVariable("id") Long kysymysId) {
@@ -96,10 +105,12 @@ public class KysymysController {
 		return vaihtoehtoRepo.findAllByKysymys(kysymys);
 	}
  	
-// 	@GetMapping("/vaihtoehto/id/kysymys")
-// 	public @ResponseBody List<Vaihtoehto> findAllByVaihtoehto(@PathVariable("id") long vaihtoehtoId) {
-// 		Optional<Vaihtoehto> kysymys = findAllByVaihtoehto(vaihtoehtoId);
-// 		return 
-// 	}
+ 	@PostMapping("/kysymykset/{id}/vaihtoehdot")
+ 	public @ResponseBody Kysymys addVaihtoehdot(@PathVariable("id") Long kysymysId, @RequestBody List<Vaihtoehto> vaihtoehdot) {
+ 		Kysymys kysymys = kysymysRepo.findByKysymysId(kysymysId);
+ 		kysymys.setVaihtoehdot(vaihtoehdot);
+ 		return kysymysRepo.save(kysymys);
+ 	}
 	
 }
+ 	

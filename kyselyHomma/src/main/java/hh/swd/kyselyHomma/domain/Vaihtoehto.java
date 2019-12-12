@@ -19,6 +19,7 @@ public class Vaihtoehto {
 	private Long vaihtoehtoId;
 	private String content;
 	
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")

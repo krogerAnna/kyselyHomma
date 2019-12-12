@@ -5,33 +5,37 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.swd.kyselyHomma.domain.Kysymys;
+import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
+//@CrossOrigin
 @Controller
 public class VastausController {
 
-	private final VastausRepository repository;
 	
-	VastausController (VastausRepository repository) {
-		this.repository = repository;
-	}
-	
-	//Tallentaa uuden vastauksen
-	@PostMapping("/savevastaus")
-	public void saveVastaus(Vastaus vastaus) {
-		repository.save(vastaus);
-	}
+//	private final VastausRepository repository;
+//	
+//	VastausController (VastausRepository repository) {
+//		this.repository = repository;
+//	}
+//	
+//	//Tallentaa uuden vastauksens
+//	@PostMapping("/savevastaus")
+//	public void saveVastaus(Vastaus vastaus) {
+//		repository.save(vastaus);
+//	}
 	
 	// **** Vastaus RESTit **** //
-	
-	@Autowired 
+	@Autowired
 	private VastausRepository vastausRepo;
 	
 	// Etsii ja palauttaa kaikki vastaukset
@@ -51,5 +55,8 @@ public class VastausController {
 	public @ResponseBody Vastaus lisaaUusiVastaus(@RequestBody Vastaus vastaus) {
 		return vastausRepo.save(vastaus);
 	}
+	
+
+
 }
 
