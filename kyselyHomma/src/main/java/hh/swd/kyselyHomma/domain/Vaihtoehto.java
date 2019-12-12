@@ -20,7 +20,6 @@ public class Vaihtoehto {
 	private String content;
 	
 
-	//@JsonIgnore
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")

@@ -20,8 +20,7 @@ public class Vastaus {
 	private Long vastausId;
 	private String content;
 	
-	
-	//@JsonIgnore
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")

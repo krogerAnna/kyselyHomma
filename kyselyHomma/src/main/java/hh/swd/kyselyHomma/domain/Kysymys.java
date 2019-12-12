@@ -26,13 +26,12 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-//	@JsonIgnore
+
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
-	
-	//@JsonIgnore
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kyselyId")

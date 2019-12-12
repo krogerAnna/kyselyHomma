@@ -23,6 +23,7 @@ public class Kysely {
 	private Long kyselyId;
 	private String name;
 	
+
 	
 	
 //	@JsonIgnore

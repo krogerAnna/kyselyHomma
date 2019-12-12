@@ -81,10 +81,10 @@ public class KysymysController {
 		return kysymysRepo.findAll();
 	}
 	
-	@PostMapping("/kysymykset")
-	public @ResponseBody Kysymys addKysymys(@RequestBody Kysymys kysymys) {
-		return kysymysRepo.save(kysymys);
-	}
+//	@PostMapping("/kysymykset")
+//	public @ResponseBody Kysymys addKysymys(@RequestBody Kysymys kysymys) {
+//		return kysymysRepo.save(kysymys);
+//	}
 	
 	// getById
 	@GetMapping("/kysymykset/{id}")
