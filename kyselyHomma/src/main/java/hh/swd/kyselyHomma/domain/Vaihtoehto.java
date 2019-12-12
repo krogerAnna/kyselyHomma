@@ -19,8 +19,9 @@ public class Vaihtoehto {
 	private Long vaihtoehtoId;
 	private String content;
 	
-	//@JsonManagedReference
-	@JsonIgnore
+
+	//@JsonIgnore
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kysymysId")
 	private Kysymys kysymys;
