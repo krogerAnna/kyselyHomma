@@ -81,6 +81,11 @@ public class KysymysController {
 		return kysymysRepo.findAll();
 	}
 	
+//	@PostMapping("/kysymykset")
+//	public @ResponseBody Kysymys addKysymys(@RequestBody Kysymys kysymys) {
+//		return kysymysRepo.save(kysymys);
+//	}
+	
 	// getById
 	@GetMapping("/kysymykset/{id}")
 	public @ResponseBody Optional<Kysymys> findKysymys(@PathVariable("id") Long kysymysId) {
@@ -99,5 +104,13 @@ public class KysymysController {
 		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
 		return vaihtoehtoRepo.findAllByKysymys(kysymys);
 	}
+ 	
+ 	@PostMapping("/kysymykset/{id}/vaihtoehdot")
+ 	public @ResponseBody Kysymys addVaihtoehdot(@PathVariable("id") Long kysymysId, @RequestBody List<Vaihtoehto> vaihtoehdot) {
+ 		Kysymys kysymys = kysymysRepo.findByKysymysId(kysymysId);
+ 		kysymys.setVaihtoehdot(vaihtoehdot);
+ 		return kysymysRepo.save(kysymys);
+ 	}
+	
 }
  	

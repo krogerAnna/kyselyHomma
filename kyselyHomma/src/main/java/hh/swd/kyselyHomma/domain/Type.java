@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Type {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long typeId;

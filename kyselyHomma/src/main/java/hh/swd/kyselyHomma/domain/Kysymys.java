@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysymys {
@@ -24,19 +26,24 @@ public class Kysymys {
 	private Long kysymysId;
 	private String content;
 	
-	@JsonBackReference
+
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vastaus> vastaukset;
 	
+
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="kyselyId")
 	private Kysely kysely;
 	
+	// ei tarvita jsonIgnorea
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="typeId")
 	private Type type;
 	
-	//@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kysymys")
 	private List<Vaihtoehto> vaihtoehdot;
 	
@@ -49,21 +56,34 @@ public class Kysymys {
 		this.content = content;
 		this.kysely = kysely;
 		this.type = type;
-		this.vaihtoehdot = new ArrayList<Vaihtoehto>();
+		this.vaihtoehdot = new ArrayList<>();
 	}
 	
-	public void addVaihtoehto(Vaihtoehto vaihtoehto) {
-		vaihtoehdot.add(vaihtoehto);
-	}
-	public List<Vaihtoehto> getVaihtoehdot() {
-		return vaihtoehdot;
+//	public Kysymys(String content, Type type, Kysely kysely) {
+//		super();
+//		this.content = content;
+//		this.type = type;
+//		this.vaihtoehdot = new ArrayList<>();
+//		this.kysely = kysely;
+//		
+//	}
+	
+	public Kysymys(String content, Kysely kysely, Type type, List<Vaihtoehto> vaihtoehdot) {
+		super();
+		this.content = content;
+		this.kysely = kysely;
+		this.type = type;
+		// toimiiko?
+		this.vaihtoehdot = new ArrayList<Vaihtoehto>(vaihtoehdot);
 	}
 	
-	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
-		this.vaihtoehdot = vaihtoehdot;
-	}
 	
 	//setterit
+	
+	public void setVaihtoehto(Vaihtoehto vaihtoehto) {
+		vaihtoehdot.add(vaihtoehto);
+	}
+
 	public void setKysymysId(Long id) {
 		this.kysymysId = id;
 	}
@@ -82,6 +102,10 @@ public class Kysymys {
 	
 	public void setType(Type type) {
 		this.type = type;
+	}
+	
+	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
+		this.vaihtoehdot = vaihtoehdot;
 	}
 	
 	//getterit
@@ -104,6 +128,10 @@ public class Kysymys {
 	public Type getType() {
 		return type;
 	}
+	
+	public List<Vaihtoehto> getVaihtoehdot() {
+		return vaihtoehdot;
+	}
 
 	//toString
 	@Override
@@ -111,5 +139,10 @@ public class Kysymys {
 		return "Kysymys [kysymysId=" + kysymysId + ", content=" + content + ", vastaukset=" + vastaukset + ", kysely="
 				+ kysely + "]";
 	}
+
+//	public void addVaihtoehto(Vaihtoehto opiskelija) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 }

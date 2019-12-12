@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +17,29 @@ import hh.swd.kyselyHomma.domain.KysymysRepository;
 import hh.swd.kyselyHomma.domain.Vastaus;
 import hh.swd.kyselyHomma.domain.VastausRepository;
 
+//@CrossOrigin
 @Controller
 public class VastausController {
+
 
 	@Autowired 
 	private VastausRepository vastausRepo;
 	@Autowired
 	private KysymysRepository kysymysRepo;
+
+	
+//	private final VastausRepository repository;
+//	
+//	VastausController (VastausRepository repository) {
+//		this.repository = repository;
+//	}
+//	
+//	//Tallentaa uuden vastauksens
+//	@PostMapping("/savevastaus")
+//	public void saveVastaus(Vastaus vastaus) {
+//		repository.save(vastaus);
+//	}
+
 	
 	// **** Vastaus RESTit **** //
 	
@@ -44,12 +61,7 @@ public class VastausController {
 		return vastausRepo.save(vastaus);
 	}
 	
-	// tietyn kysymyksen vastaukset
- 	@GetMapping("/kysymykset/{id}/vastaukset")
- 	public @ResponseBody List<Vastaus> findByKysymys(@PathVariable("id") Long kysymysId) {
- 		Optional<Kysymys> kysymys = kysymysRepo.findById(kysymysId);
- 		return vastausRepo.findAllByKysymys(kysymys);
-	
-}
+
+
 }
 
